@@ -1,0 +1,1 @@
+xsltproc ../stylesheets/export.xsl image2.fodt > image2.xhtml

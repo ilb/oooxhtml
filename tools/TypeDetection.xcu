@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" oor:name="TypeDetection" oor:package="org.openoffice.Office">
+ <node oor:name="Types">
+  <node oor:name="CleanXHTMLCalc">
+   <prop oor:name="Data" oor:type="xs:string">
+    <value>0,,doctype:-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1 plus calc//EN,,xhtml;html,0,</value>
+   </prop>
+   <prop oor:name="UIName" oor:type="xs:string">
+    <value xml:lang="en-US">CleanXHTMLCalc</value>
+   </prop>
+  </node>
+  <node oor:name="CleanXHTMLWriter">
+   <prop oor:name="Data" oor:type="xs:string">
+    <value>0,,doctype:-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN,,xhtml;html,0,</value>
+   </prop>
+   <prop oor:name="UIName" oor:type="xs:string">
+    <value xml:lang="en-US">CleanXHTMLWriter</value>
+   </prop>
+  </node>
+ </node>
+ <node oor:name="Filters">
+  <node oor:name="CleanXHTMLCalc">
+   <prop oor:name="UIName" oor:type="xs:string">
+    <value xml:lang="en-US">CleanXHTMLCalc</value>
+   </prop>
+   <prop oor:name="Data" oor:type="xs:string">
+    <value>0,CleanXHTMLCalc,com.sun.star.sheet.SpreadsheetDocument,com.sun.star.comp.Writer.XmlFilterAdaptor,524355,com.sun.star.documentconversion.XSLTFilter;false;com.sun.star.comp.Calc.XMLOasisImporter;com.sun.star.comp.Calc.XMLOasisExporter;vnd.sun.star.Package:CleanXHTMLCalc/import.xsl;vnd.sun.star.Package:CleanXHTMLCalc/export.xsl;;,0,</value>
+   </prop>
+  </node>
+  <node oor:name="CleanXHTMLWriter">
+   <prop oor:name="UIName" oor:type="xs:string">
+    <value xml:lang="en-US">CleanXHTMLWriter</value>
+   </prop>
+   <prop oor:name="Data" oor:type="xs:string">
+    <value>0,CleanXHTMLWriter,com.sun.star.text.TextDocument,com.sun.star.comp.Writer.XmlFilterAdaptor,524355,com.sun.star.documentconversion.XSLTFilter;false;com.sun.star.comp.Writer.XMLOasisImporter;com.sun.star.comp.Writer.XMLOasisExporter;vnd.sun.star.Package:CleanXHTMLWriter/import.xsl;vnd.sun.star.Package:CleanXHTMLWriter/export.xsl;;,0,</value>
+   </prop>
+  </node></node>
+</oor:component-data>

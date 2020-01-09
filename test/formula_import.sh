@@ -1,0 +1,1 @@
+xsltproc --nonet --novalid ../stylesheets/import.xsl formula.xhtml | tidy -i -utf8 -xml -w 1000 > formula.xml

@@ -1,0 +1,17 @@
+#при сохранении миме-тип устанавливается офисом на основании расширения файла
+#про запросе миме-тип устанавливает свн какой у него хранится
+#миме-тип в репе должен быть текстовым чтобы дифы формировались корректно
+#для браузера миме-тип нужно перебивать на тот который браузер сможет отобразить - фильтр фэйковый может быть
+
+ExtFilterDefine LO_XHTML_PUT mode=input cmd="/usr/share/subversion/filters/oooxhtml/LO_XHTML_PUT.sh" enableenv=LO_XHTML_PUT
+ExtFilterDefine LO_XHTML_GET intype=text/xhtml+ods outtype=application/vnd.oasis.opendocument.spreadsheet mode=output cmd="/usr/share/subversion/filters/oooxhtml/LO_XHTML_GET.sh" enableenv=LO_XHTML_GET
+ExtFilterDefine BR_XHTML_GET intype=text/xhtml+ods outtype=application/xhtml+xml mode=output cmd="/bin/cat" enableenv=BR_XHTML_GET
+
+<Location /repos/>
+ ExtFilterOptions LogStderr Onfail=abort
+ SetEnvIfExpr "%{REQUEST_METHOD} == 'PUT' && %{HTTP_USER_AGENT} == 'LibreOffice' && %{REQUEST_URI} =~ /.xhtml$/" LO_XHTML_PUT=1
+ SetEnvIfExpr "%{REQUEST_METHOD} == 'GET' && %{HTTP_USER_AGENT} == 'LibreOffice' && %{REQUEST_URI} =~ /.xhtml$/" LO_XHTML_GET=1
+ SetEnvIfExpr "%{REQUEST_METHOD} == 'GET' && %{HTTP_ACCEPT} =~ m#application/xhtml\+xml# && %{REQUEST_URI} =~ /.xhtml$/" BR_XHTML_GET=1
+ SetInputFilter LO_XHTML_PUT
+ SetOutputFilter LO_XHTML_GET;BR_XHTML_GET
+</Location>
