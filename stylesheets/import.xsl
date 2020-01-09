@@ -987,6 +987,16 @@
                 <xsl:variable name="attr" select="normalize-space(substring-before(.,':'))"/>
                 <xsl:variable name="value" select="normalize-space(substring-after(.,':'))"/>
                 <xsl:choose>
+                    <xsl:when test="$attr='left'">
+                        <xsl:attribute name="svg:x">
+                            <xsl:value-of select="$value"/>
+                        </xsl:attribute>
+                    </xsl:when>
+                    <xsl:when test="$attr='top'">
+                        <xsl:attribute name="svg:y">
+                            <xsl:value-of select="$value"/>
+                        </xsl:attribute>
+                    </xsl:when>
                     <xsl:when test="$attr='width'">
                         <xsl:attribute name="svg:width">
                             <xsl:value-of select="$value"/>
