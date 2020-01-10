@@ -58,8 +58,8 @@ var openDocHistory = function () {
     var css = '.edit-menu { position: fixed; top: 1rem; right: 1rem; opacity: 0.8; transition: all 0.3s ease-out; z-index: 100; }' +
               '.edit-menu:hover { opacity: 1; }' +
               '.edit-menu button { font-size: 1.3rem; height: 2.3rem; min-width: 2.3rem }';
-    var head = document.head || document.getElementsByTagName('head')[0];
-    var style = document.createElement('style');
+    var head = document.head || document.getElementsByTagName('http://www.w3.org/1999/xhtml','head')[0];
+    var style = document.createElementNS('http://www.w3.org/1999/xhtml','style');
 
     style.type = 'text/css';
     style.appendChild(document.createTextNode(css));
@@ -68,28 +68,28 @@ var openDocHistory = function () {
   };
 
   var appendEditMenu = function() {
-    var editMenu = document.createElement('div');
+    var editMenu = document.createElementNS('http://www.w3.org/1999/xhtml','div');
     editMenu.className = 'edit-menu';
 
-    var editButton = document.createElement('button');
+    var editButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
     editButton.innerHTML = '\u270e';
     editButton.setAttribute('title', 'Редактировать (alt+E)');
     editButton.setAttribute('onclick', 'editDoc()');
     editMenu.appendChild(editButton);
 
-    var historyButton = document.createElement('button');
+    var historyButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
     historyButton.innerHTML = '\u25f4';
     historyButton.setAttribute('title', 'История изменений (alt+H)');
     historyButton.setAttribute('onclick', 'openDocHistory()');
     editMenu.appendChild(historyButton);
 
-    var helpButton = document.createElement('button');
+    var helpButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
     helpButton.innerHTML = '?';
     helpButton.setAttribute('title', 'Справка');
     helpButton.setAttribute('onclick', 'window.open("https://docs.ilb.ru/oooxhtml/readme.xhtml")');
     editMenu.appendChild(helpButton);
 
-    var body = document.body || document.getElementsByTagName('body')[0];
+    var body = document.body || document.getElementsByTagName('http://www.w3.org/1999/xhtml','body')[0];
     body.appendChild(editMenu);
     console.log('editMenu created');
   };
@@ -136,8 +136,8 @@ var openDocHistory = function () {
               '.sidebar-label { position: fixed; top: 0; left: 0; background: rgb(0,90,156); color: white; z-index: 1; font-size: 1.3rem; padding: 0.6rem; opacity: 0.8; }' +
               '.sidebar .current { background: lightblue }' +
               '.sidebar-dir-btn { background: white; border: 0; outline: none; width: 1.5rem; height: 1rem; }';
-    var head = document.head || document.getElementsByTagName('head')[0];
-    var style = document.createElement('style');
+    var head = document.head || document.getElementsByTagName('http://www.w3.org/1999/xhtml','head')[0];
+    var style = document.createElementNS('http://www.w3.org/1999/xhtml','style');
 
     style.type = 'text/css';
     style.appendChild(document.createTextNode(css));
@@ -146,19 +146,19 @@ var openDocHistory = function () {
   };
 
   var appendSidebar = function() {
-    var sidebar = document.createElement('div');
+    var sidebar = document.createElementNS('http://www.w3.org/1999/xhtml','div');
     sidebar.className = 'sidebar';
 
-    var sidebarLabel = document.createElement('div');
+    var sidebarLabel = document.createElementNS('http://www.w3.org/1999/xhtml','div');
     sidebarLabel.className = 'sidebar-label';
     sidebarLabel.innerHTML = '\u2630';
     sidebar.appendChild(sidebarLabel);
 
-    var sidebarMenu = document.createElement('div');
+    var sidebarMenu = document.createElementNS('http://www.w3.org/1999/xhtml','div');
     sidebarMenu.className = 'sidebar-menu';
     sidebarMenu.innerHTML = 'Loading...';
     sidebar.appendChild(sidebarMenu);
-    var body = document.body || document.getElementsByTagName('body')[0];
+    var body = document.body || document.getElementsByTagName('http://www.w3.org/1999/xhtml','body')[0];
     body.appendChild(sidebar);
     console.log('sidebar created');
   };
@@ -200,17 +200,17 @@ var openDocHistory = function () {
       return el && el.link && el.name && (el.name.toLowerCase() !== 'parent directory' || !parent);
     });
     if (!menuElems.length) { menuElems.push({ name: 'Пустой каталог' }); }
-    var newMenu = document.createElement('ul');
+    var newMenu = document.createElementNS('http://www.w3.org/1999/xhtml','ul');
     newMenu.style.listStyleType = 'none';
     var currentUrl = location.href.replace('?', '#').split('#')[0];
     menuElems.forEach(function(menuElem, index) {
-      var li = document.createElement('li');
+      var li = document.createElementNS('http://www.w3.org/1999/xhtml','li');
       if (index === 0 && menuElem.name.toLowerCase() === 'parent directory') {
         li.style.marginLeft = '-1rem';
         menuElem.name = 'Родительский каталог';
       }
       if (/\/$/.test(menuElem.name)) {
-        var button = document.createElement('button');
+        var button = document.createElementNS('http://www.w3.org/1999/xhtml','button');
         button.className = 'sidebar-dir-btn';
         button.innerHTML = '+';
         // button.setAttribute('onclick', 'openSidebarDir()');
@@ -219,7 +219,7 @@ var openDocHistory = function () {
         li.style.marginLeft = '-1.5rem';
       }
 
-      var anchor = document.createElement(menuElem.link ? 'a' : 'span');
+      var anchor = document.createElementNS('http://www.w3.org/1999/xhtml',menuElem.link ? 'a' : 'span');
       anchor.setAttribute('href', menuElem.link);
       anchor.innerHTML = (menuElem.description || menuElem.name).replace(/\/$/, '');
       li.appendChild(anchor);
@@ -243,7 +243,7 @@ var openDocHistory = function () {
     if (nextText === '-') {
       var link = button.parentNode.querySelector('a');
       var url = link.href;
-      var subtree = document.createElement('div');
+      var subtree = document.createElementNS('http://www.w3.org/1999/xhtml','div');
       subtree.className = 'sidebar-subtree';
       loadContent({
         url: url,
@@ -290,7 +290,7 @@ var openDocHistory = function () {
             console.log('removing sidebar');
             return;
           }
-          sidebarContent = document.createElement('div');
+          sidebarContent = document.createElementNS('http://www.w3.org/1999/xhtml','div');
           sidebarContent.innerHTML = doc.querySelector('body').innerHTML;
           var scripts = sidebarContent.querySelectorAll('script');
           [].forEach.call(scripts, function (script) { script.parentNode.removeChild(script); });

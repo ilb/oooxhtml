@@ -38,7 +38,7 @@
               '.sidebar .current { background: lightblue }' +
               '.sidebar-dir-btn { background: white; border: 0; outline: none; width: 1.5rem; height: 1rem; }';
     var head = document.head || document.getElementsByTagName('head')[0];
-    var style = document.createElement('style');
+    var style = document.createElementNS('http://www.w3.org/1999/xhtml','style');
 
     style.type = 'text/css';
     style.appendChild(document.createTextNode(css));
@@ -47,15 +47,15 @@
   };
 
   var appendSidebar = function() {
-    var sidebar = document.createElement('div');
+    var sidebar = document.createElementNS('http://www.w3.org/1999/xhtml','div');
     sidebar.className = 'sidebar';
 
-    var sidebarLabel = document.createElement('div');
+    var sidebarLabel = document.createElementNS('http://www.w3.org/1999/xhtml','div');
     sidebarLabel.className = 'sidebar-label';
     sidebarLabel.innerHTML = '\u2630';
     sidebar.appendChild(sidebarLabel);
 
-    var sidebarMenu = document.createElement('div');
+    var sidebarMenu = document.createElementNS('http://www.w3.org/1999/xhtml','div');
     sidebarMenu.className = 'sidebar-menu';
     sidebarMenu.innerHTML = 'Loading...';
     sidebar.appendChild(sidebarMenu);
@@ -101,17 +101,17 @@
       return el && el.link && el.name && (el.name.toLowerCase() !== 'parent directory' || !parent);
     });
     if (!menuElems.length) { menuElems.push({ name: 'Пустой каталог' }); }
-    var newMenu = document.createElement('ul');
+    var newMenu = document.createElementNS('http://www.w3.org/1999/xhtml','ul');
     newMenu.style.listStyleType = 'none';
     var currentUrl = location.href.replace('?', '#').split('#')[0];
     menuElems.forEach(function(menuElem, index) {
-      var li = document.createElement('li');
+      var li = document.createElementNS('http://www.w3.org/1999/xhtml','li');
       if (index === 0 && menuElem.name.toLowerCase() === 'parent directory') {
         li.style.marginLeft = '-1rem';
         menuElem.name = 'Родительский каталог';
       }
       if (/\/$/.test(menuElem.name)) {
-        var button = document.createElement('button');
+        var button = document.createElementNS('http://www.w3.org/1999/xhtml','button');
         button.className = 'sidebar-dir-btn';
         button.innerHTML = '+';
         // button.setAttribute('onclick', 'openSidebarDir()');
@@ -120,7 +120,7 @@
         li.style.marginLeft = '-1.5rem';
       }
 
-      var anchor = document.createElement(menuElem.link ? 'a' : 'span');
+      var anchor = document.createElementNS('http://www.w3.org/1999/xhtml',menuElem.link ? 'a' : 'span');
       anchor.setAttribute('href', menuElem.link);
       anchor.innerHTML = (menuElem.description || menuElem.name).replace(/\/$/, '');
       li.appendChild(anchor);
@@ -144,7 +144,7 @@
     if (nextText === '-') {
       var link = button.parentNode.querySelector('a');
       var url = link.href;
-      var subtree = document.createElement('div');
+      var subtree = document.createElementNS('http://www.w3.org/1999/xhtml','div');
       subtree.className = 'sidebar-subtree';
       loadContent({
         url: url,
@@ -191,7 +191,7 @@
             console.log('removing sidebar');
             return;
           }
-          sidebarContent = document.createElement('div');
+          sidebarContent = document.createElementNS('http://www.w3.org/1999/xhtml','div');
           sidebarContent.innerHTML = doc.querySelector('body').innerHTML;
           var scripts = sidebarContent.querySelectorAll('script');
           [].forEach.call(scripts, function (script) { script.parentNode.removeChild(script); });
