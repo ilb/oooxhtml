@@ -731,7 +731,7 @@
                     <xsl:when test="@xlink:href">
                         <xsl:value-of select="@xlink:href"/>
                     </xsl:when>
-                    <xsl:when test="@loext:mime-type and office:binary-data">
+                    <xsl:when test="office:binary-data">
                         <xsl:value-of select="concat('data:',@loext:mime-type,';base64,',translate(office:binary-data,' &#10;',''))"/>
                     </xsl:when>
                 </xsl:choose>
