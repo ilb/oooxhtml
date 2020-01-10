@@ -47,7 +47,7 @@
             <div class="contents">
                 <p>Содержание</p>
                 <ol>
-                    <xsl:apply-templates select="//xhtml:h2" mode="ToC"/>
+                    <xsl:apply-templates select="//xhtml:h1" mode="ToC"/>
                 </ol>
             </div>
             <xsl:apply-templates select="@*|node()"/>

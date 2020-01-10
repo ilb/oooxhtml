@@ -25,6 +25,28 @@
 
 
     <!-- create ToC entry -->
+    <xsl:template match="xhtml:h1" mode="ToC">
+        <xsl:value-of select="$newline"/>
+        <xsl:variable name="link">
+            <xsl:value-of select="@id"/>
+        </xsl:variable>
+        <xsl:variable name="myId">
+            <xsl:value-of select="generate-id(.)"/>
+        </xsl:variable>
+        <li>
+            <a id="ToC-{$link}" href="#{$link}">
+                <xsl:apply-templates select="node()"/>
+            </a>
+            <xsl:if test="following::xhtml:h2[1][preceding::xhtml:h1[1]]">
+                <xsl:value-of select="$newline"/>
+                <ol>
+                    <xsl:apply-templates select="following::xhtml:h2[preceding::xhtml:h1[1][generate-id() = $myId]]" mode="ToC"/>
+                    <xsl:value-of select="$newline"/>
+                </ol>
+                <xsl:value-of select="$newline"/>
+            </xsl:if>
+        </li>
+    </xsl:template>
     <xsl:template match="xhtml:h2" mode="ToC">
         <xsl:value-of select="$newline"/>
         <xsl:variable name="link">
