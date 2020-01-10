@@ -58,7 +58,7 @@ var openDocHistory = function () {
     var css = '.edit-menu { position: fixed; top: 1rem; right: 1rem; opacity: 0.8; transition: all 0.3s ease-out; z-index: 100; }' +
               '.edit-menu:hover { opacity: 1; }' +
               '.edit-menu button { font-size: 1.3rem; height: 2.3rem; min-width: 2.3rem }';
-    var head = document.head || document.getElementsByTagName('http://www.w3.org/1999/xhtml','head')[0];
+    var head = document.head || document.getElementsByTagNameNS('http://www.w3.org/1999/xhtml','head')[0];
     var style = document.createElementNS('http://www.w3.org/1999/xhtml','style');
 
     style.type = 'text/css';
@@ -89,7 +89,7 @@ var openDocHistory = function () {
     helpButton.setAttribute('onclick', 'window.open("https://docs.ilb.ru/oooxhtml/readme.xhtml")');
     editMenu.appendChild(helpButton);
 
-    var body = document.body || document.getElementsByTagName('http://www.w3.org/1999/xhtml','body')[0];
+    var body = document.body || document.getElementsByTagNameNS('http://www.w3.org/1999/xhtml','body')[0];
     body.appendChild(editMenu);
     console.log('editMenu created');
   };
@@ -136,7 +136,7 @@ var openDocHistory = function () {
               '.sidebar-label { position: fixed; top: 0; left: 0; background: rgb(0,90,156); color: white; z-index: 1; font-size: 1.3rem; padding: 0.6rem; opacity: 0.8; }' +
               '.sidebar .current { background: lightblue }' +
               '.sidebar-dir-btn { background: white; border: 0; outline: none; width: 1.5rem; height: 1rem; }';
-    var head = document.head || document.getElementsByTagName('http://www.w3.org/1999/xhtml','head')[0];
+    var head = document.head || document.getElementsByTagNameNS('http://www.w3.org/1999/xhtml','head')[0];
     var style = document.createElementNS('http://www.w3.org/1999/xhtml','style');
 
     style.type = 'text/css';
@@ -158,7 +158,7 @@ var openDocHistory = function () {
     sidebarMenu.className = 'sidebar-menu';
     sidebarMenu.innerHTML = 'Loading...';
     sidebar.appendChild(sidebarMenu);
-    var body = document.body || document.getElementsByTagName('http://www.w3.org/1999/xhtml','body')[0];
+    var body = document.body || document.getElementsByTagNameNS('http://www.w3.org/1999/xhtml','body')[0];
     body.appendChild(sidebar);
     console.log('sidebar created');
   };
