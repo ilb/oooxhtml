@@ -394,6 +394,59 @@
                         </style:list-level-properties>
                     </text:list-level-style-number>
                 </text:list-style>
+                <text:list-style style:name="ul">
+                    <text:list-level-style-bullet text:level="1" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.27cm" fo:text-indent="-0.635cm" fo:margin-left="1.27cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                    <text:list-level-style-bullet text:level="2" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.905cm" fo:text-indent="-0.635cm" fo:margin-left="1.905cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                    <text:list-level-style-bullet text:level="3" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.54cm" fo:text-indent="-0.635cm" fo:margin-left="2.54cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                    <text:list-level-style-bullet text:level="4" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.175cm" fo:text-indent="-0.635cm" fo:margin-left="3.175cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                    <text:list-level-style-bullet text:level="5" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.81cm" fo:text-indent="-0.635cm" fo:margin-left="3.81cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                    <text:list-level-style-bullet text:level="6" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="4.445cm" fo:text-indent="-0.635cm" fo:margin-left="4.445cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                    <text:list-level-style-bullet text:level="7" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.08cm" fo:text-indent="-0.635cm" fo:margin-left="5.08cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                    <text:list-level-style-bullet text:level="8" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.715cm" fo:text-indent="-0.635cm" fo:margin-left="5.715cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                    <text:list-level-style-bullet text:level="9" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.35cm" fo:text-indent="-0.635cm" fo:margin-left="6.35cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                    <text:list-level-style-bullet text:level="10" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
+                        <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+                            <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.985cm" fo:text-indent="-0.635cm" fo:margin-left="6.985cm"/>
+                        </style:list-level-properties>
+                    </text:list-level-style-bullet>
+                </text:list-style>
+
                 <style:style style:name="img" style:family="graphic" style:parent-style-name="Graphics">
                     <style:graphic-properties style:mirror="none" fo:clip="rect(0cm, 0cm, 0cm, 0cm)" draw:luminance="0%" draw:contrast="0%" draw:red="0%" draw:green="0%" draw:blue="0%" draw:gamma="100%" draw:color-inversion="false" draw:image-opacity="100%" draw:color-mode="standard" />
                 </style:style>
@@ -957,7 +1010,7 @@
     </xsl:template>
 
     <xsl:template match="x:ul">
-        <text:list>
+        <text:list text:style-name="ul">
             <xsl:apply-templates />
         </text:list>
     </xsl:template>

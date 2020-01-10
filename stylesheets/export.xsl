@@ -680,9 +680,21 @@
     </xsl:template>
     <!-- не пустой список -->
     <xsl:template match="text:list[text:list-item]">
-        <ol>
-            <xsl:apply-templates />
-        </ol>
+        <xsl:variable name="styleName" select="@text:style-name"/>
+        <xsl:variable name="style" select = "/*/office:automatic-styles/text:list-style[@style:name=$styleName]"/>
+        <xsl:choose>
+            <xsl:when test="$style/text:list-level-style-number[@text:level='1']">
+                <ol>
+                    <xsl:apply-templates />
+                </ol>
+            </xsl:when>
+            <xsl:otherwise>
+                <ul>
+                    <xsl:apply-templates />
+                </ul>
+            </xsl:otherwise>
+        </xsl:choose>
+
     </xsl:template>
     <!-- пустой список, в нем бывает list-header -->
     <xsl:template match="text:list[not(text:list-item) and text:list-header]">
