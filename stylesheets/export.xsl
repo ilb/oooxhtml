@@ -728,7 +728,7 @@
         <img alt="{../@draw:name}" style="width:{../@svg:width};height:{../@svg:height}"> <!-- left:{../@svg:x};top:{../@svg:y}; -->
             <xsl:attribute name="src">
                 <xsl:choose>
-                    <xsl:when test="@xlink:href">
+                    <xsl:when test="normalize-space(@xlink:href)">
                         <xsl:value-of select="@xlink:href"/>
                     </xsl:when>
                     <xsl:when test="office:binary-data">
