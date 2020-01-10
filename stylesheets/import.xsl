@@ -714,6 +714,11 @@
                 </meta:user-defined>
             </xsl:otherwise>
         </xsl:choose>
+        <xsl:if test="/processing-instruction('xml-stylesheet')">
+                <meta:user-defined meta:name="xml-stylesheet">
+                    <xsl:value-of select="/processing-instruction('xml-stylesheet')"/>
+                </meta:user-defined>
+        </xsl:if>
     </xsl:template>
     <!--    <xsl:template match="x:script">
         <meta:user-defined meta:name="script">

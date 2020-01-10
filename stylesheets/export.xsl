@@ -131,7 +131,16 @@
     <!-- Process the document model -->
     <xsl:template match="/">
         <xsl:processing-instruction name="xml-stylesheet">
-            <xsl:text>type="text/xsl" href="/oooxhtml/oooxhtml.xsl"</xsl:text>
+            <xsl:variable name="document" select="office:document-content| office:document"/>
+            <xsl:variable name="xmlstylesheet" select="$document/office:meta/meta:user-defined[@meta:name='xml-stylesheet']"/>
+            <xsl:choose>
+                <xsl:when test="$xmlstylesheet">
+                    <xsl:value-of select="$xmlstylesheet"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>type="text/xsl" href="/oooxhtml/oooxhtml.xsl"</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:processing-instruction>
         <xsl:apply-templates />
     </xsl:template>
@@ -173,14 +182,13 @@
         <meta name="keywords" content="{.}" />
     </xsl:template>
     <xsl:template match="meta:user-defined">
-        <!--        <xsl:choose>
-        <xsl:when test="@meta:name='script'">
-            <script type="text/javascript" src="{.}"><xsl:text><![CDATA[]]></xsl:text></script>
-        </xsl:when>
-        <xsl:otherwise>-->
-        <meta name="{@meta:name}" content="{.}" />
-        <!--            </xsl:otherwise>
-        </xsl:choose>-->
+        <xsl:choose>
+            <xsl:when test="@meta:name='xml-stylesheet'">
+            </xsl:when>
+            <xsl:otherwise>
+                <meta name="{@meta:name}" content="{.}" />
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     <!-- берем только 1 стиль -->
     <xsl:template match="style:page-layout[@style:name='pm1']" mode="css">
