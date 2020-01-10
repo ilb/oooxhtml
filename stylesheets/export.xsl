@@ -53,7 +53,7 @@
     <xsl:variable name="translit_rus" select="'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ .,;/?\/«»()'"/>
     <xsl:variable name="translit_eng" select="'abvgdeеzzijklmnoprstufhccss___eyjabvgdeеzzijklmnoprstufhccss___eyj______\/____'"/>
     <!-- replace in export.xsl and import.xsl -->
-    <xsl:variable name="generator_version" select="'1.3'"/>
+    <xsl:variable name="generator_version" select="'1.4'"/>
     <xsl:param name="copystyles" select="'Good,Neutral,Bad,Warning,Error'"/>
     <xsl:variable name="documentType" select="local-name(office:document-content | office:document/office:body/office:spreadsheet)"/>
 
@@ -130,6 +130,9 @@
 
     <!-- Process the document model -->
     <xsl:template match="/">
+        <xsl:processing-instruction name="xml-stylesheet">
+            <xsl:text>type="text/xsl" href="/oooxhtml/oooxhtml.xsl"</xsl:text>
+        </xsl:processing-instruction>
         <xsl:apply-templates />
     </xsl:template>
     <xsl:template match="office:document-content| office:document">
@@ -141,7 +144,6 @@
     <xsl:template match="office:meta">
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <link rel="stylesheet" type="text/css" href="/oooxhtml/oooxhtml.css"/>
             <xsl:variable name="style">
                 <xsl:apply-templates select="../office:automatic-styles/style:page-layout" mode="css"/>
             </xsl:variable>
@@ -294,12 +296,6 @@
     <xsl:template match="office:body">
         <body>
             <xsl:apply-templates />
-            <script type="text/javascript" src="/privilegedAPI/web/scripts/privilegedAPI.js">
-                <xsl:text><![CDATA[]]></xsl:text>
-            </script>
-            <script type="text/javascript" src="/oooxhtml/oooxhtml.js">
-                <xsl:text><![CDATA[]]></xsl:text>
-            </script>
         </body>
     </xsl:template>
     <xsl:template match="office:spreadsheet">
