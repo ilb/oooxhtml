@@ -9,6 +9,12 @@ table > caption {
     font-weight: bold;
     padding: 1rem 0;
 }
+.contents {
+    position: fixed;
+    top: 0;
+    max-height: 100%;
+    overflow: auto;
+}
 .container.spreadsheet {
     font-size:10pt;line-height: 1.1;
 }
@@ -163,14 +169,14 @@ table > caption {
 
 tr.Good,
 td.Good {
-  -webkit-box-shadow: 0px 0px 0px #A3C293 inset;
-  box-shadow: 0px 0px 0px #A3C293 inset;
+    -webkit-box-shadow: 0px 0px 0px #A3C293 inset;
+    box-shadow: 0px 0px 0px #A3C293 inset;
 }
 
 tr.Good,
 td.Good {
-  background: #FCFFF5 !important;
-  color: #2C662D !important;
+    background: #FCFFF5 !important;
+    color: #2C662D !important;
 }
 
 /*--------------
@@ -179,14 +185,14 @@ td.Good {
 
 tr.Bad,
 td.Bad {
-  -webkit-box-shadow: 0px 0px 0px #E0B4B4 inset;
-  box-shadow: 0px 0px 0px #E0B4B4 inset;
+    -webkit-box-shadow: 0px 0px 0px #E0B4B4 inset;
+    box-shadow: 0px 0px 0px #E0B4B4 inset;
 }
 
 tr.Bad,
 td.Bad {
-  background: #ffcccc !important;
-  color: #9F3A38 !important;
+    background: #ffcccc !important;
+    color: #9F3A38 !important;
 }
 
 /*--------------
@@ -195,14 +201,14 @@ td.Bad {
 
 tr.Error,
 td.Error {
-  -webkit-box-shadow: 0px 0px 0px #E0B4B4 inset;
-  box-shadow: 0px 0px 0px #E0B4B4 inset;
+    -webkit-box-shadow: 0px 0px 0px #E0B4B4 inset;
+    box-shadow: 0px 0px 0px #E0B4B4 inset;
 }
 
 tr.Error,
 td.Error {
-  background: #FFF6F6 !important;
-  color: #9F3A38 !important;
+    background: #FFF6F6 !important;
+    color: #9F3A38 !important;
 }
 
 /*--------------
@@ -211,18 +217,18 @@ td.Error {
 
 tr.Warning,
 td.Warning {
-  -webkit-box-shadow: 0px 0px 0px #C9BA9B inset;
-  box-shadow: 0px 0px 0px #C9BA9B inset;
+    -webkit-box-shadow: 0px 0px 0px #C9BA9B inset;
+    box-shadow: 0px 0px 0px #C9BA9B inset;
 }
 
 tr.Warning,
 td.Warning {
-  background: #FFFAF3 !important;
-  color: #573A08 !important;
+    background: #FFFAF3 !important;
+    color: #573A08 !important;
 }
 
 tr.Neutral,
 td.Neutral {
-  background: #ffffcc !important;
-  color: #9F3A38 !important;
+    background: #ffffcc !important;
+    color: #9F3A38 !important;
 }
