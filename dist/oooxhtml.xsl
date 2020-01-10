@@ -42,13 +42,16 @@
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template match="xhtml:div[@class='contents']">
-        <div class="contents">
-            <p>Содержание</p>
-            <ol>
-                <xsl:apply-templates select="//xhtml:h2" mode="ToC"/>
-            </ol>
-        </div>
+    <xsl:template match="xhtml:body">
+        <xsl:copy>
+            <div class="contents">
+                <p>Содержание</p>
+                <ol>
+                    <xsl:apply-templates select="//xhtml:h2" mode="ToC"/>
+                </ol>
+            </div>
+            <xsl:apply-templates select="@*|node()"/>
+        </xsl:copy>
     </xsl:template>
 
 </xsl:stylesheet>
