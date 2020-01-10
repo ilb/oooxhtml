@@ -724,7 +724,7 @@
         <xsl:apply-templates />
     </xsl:template>
     <!-- не выводим повторяющиеся изображения, например вставка svg в документ сохраняется как два изображения -->
-    <xsl:template match="draw:image[not(preceding-sibling::draw:image) and (@xlink:href or (@loext:mime-type and office:binary-data))]">
+    <xsl:template match="draw:image[not(preceding-sibling::draw:image) and (@xlink:href or office:binary-data)]">
         <img alt="{../@draw:name}" style="width:{../@svg:width};height:{../@svg:height}"> <!-- left:{../@svg:x};top:{../@svg:y}; -->
             <xsl:attribute name="src">
                 <xsl:choose>
