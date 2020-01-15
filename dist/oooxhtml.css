@@ -15,8 +15,8 @@ table > caption {
     max-height: 100%;
     overflow: auto;
     left: 0;
-    width: calc((100vw - 1050px) / 2);
-    min-width: 9.9rem;
+    width: calc((100vw - 1060px) / 2);
+    min-width: 9.2rem;
     word-break: break-all;
     word-break: break-word;
 }
