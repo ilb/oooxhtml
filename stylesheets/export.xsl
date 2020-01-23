@@ -243,7 +243,7 @@
         </xsl:if>
     </xsl:template>
     <xsl:template match="@fo:text-align" mode="css">
-        <xsl:if test=".='center'">
+        <xsl:if test=".='center' or .='justify'">
             <xsl:value-of select="concat(local-name(.),':',.,';')"/>
         </xsl:if>
         <xsl:if test=".='end'">

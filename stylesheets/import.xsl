@@ -603,6 +603,7 @@
                         <xsl:when test="$attr='text-align'">
                             <xsl:attribute name="fo:text-align">
                                 <xsl:if test="$value='center'">center</xsl:if>
+                                <xsl:if test="$value='justify'">justify</xsl:if>
                                 <xsl:if test="$value='left'">start</xsl:if>
                                 <xsl:if test="$value='right'">end</xsl:if>
                             </xsl:attribute>
