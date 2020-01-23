@@ -194,6 +194,13 @@
                             <style:paragraph-properties fo:margin-top="0.212cm" fo:margin-bottom="0.212cm" contextual-spacing="false"/>
                             <style:text-properties fo:font-size="95%" fo:font-style="italic" fo:font-weight="bold" style:font-size-asian="95%" style:font-style-asian="italic" style:font-weight-asian="bold" style:font-size-complex="95%" style:font-style-complex="italic" style:font-weight-complex="bold"/>
                         </style:style>
+                        <style:style style:name="Table_20_Contents" style:display-name="Table Contents" style:family="paragraph" style:parent-style-name="Standard" style:class="extra">
+                            <style:paragraph-properties text:number-lines="false" text:line-number="0"/>
+                        </style:style>
+                        <style:style style:name="Table_20_Heading" style:display-name="Table Heading" style:family="paragraph" style:parent-style-name="Table_20_Contents" style:class="extra">
+                            <style:paragraph-properties fo:text-align="center" style:justify-single-word="false" text:number-lines="false" text:line-number="0"/>
+                            <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+                        </style:style>
                         <style:style style:name="Situation" style:family="text">
                             <style:text-properties fo:color="#ed1c24"/>
                         </style:style>
@@ -715,9 +722,9 @@
             </xsl:otherwise>
         </xsl:choose>
         <xsl:if test="/processing-instruction('xml-stylesheet')">
-                <meta:user-defined meta:name="xml-stylesheet">
-                    <xsl:value-of select="/processing-instruction('xml-stylesheet')"/>
-                </meta:user-defined>
+            <meta:user-defined meta:name="xml-stylesheet">
+                <xsl:value-of select="/processing-instruction('xml-stylesheet')"/>
+            </meta:user-defined>
         </xsl:if>
     </xsl:template>
     <!--    <xsl:template match="x:script">
@@ -855,7 +862,7 @@
         </table:table-row>
     </xsl:template>
     <!-- cell begin -->
-    <xsl:template match="x:td">
+    <xsl:template match="x:td | x:th">
         <xsl:if test="@title and substring(@title,1,3)!='of:'">
             <table:covered-table-cell table:number-columns-repeated="{@title}"/>
         </xsl:if>
@@ -937,6 +944,9 @@
 
     <xsl:template match="x:p">
         <text:p>
+            <xsl:if test="local-name(..)='th'">
+                <xsl:attribute name="text:style-name">Table_20_Heading</xsl:attribute>
+            </xsl:if>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates />
         </text:p>

@@ -433,14 +433,20 @@
         <xsl:param name="position"/>
         <xsl:param name="cnt" select="0"/>
         <xsl:if test="$cnt > 0">
-            <td>
+            <xsl:variable name="elname">
+                <xsl:choose>
+                    <xsl:when test="text:p[@text:style-name='Table_20_Heading']">th</xsl:when>
+                    <xsl:otherwise>td</xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <xsl:element name="{$elname}">
                 <xsl:apply-templates select="@*"/>
                 <!-- если нет стиля, подтянем стиль по-умолчанию -->
                 <xsl:if test="not(@table:style-name)">
                     <xsl:apply-templates select="ancestor::table:table/table:table-column[position()=$position]" mode="defaultstyle"/>
                 </xsl:if>
                 <xsl:apply-templates />
-            </td>
+            </xsl:element>
             <xsl:apply-templates select="." mode="repeat">
                 <xsl:with-param name="cnt" select="$cnt - 1"/>
                 <xsl:with-param name="position" select="$position + 1"/>
@@ -515,7 +521,13 @@
                 </xsl:apply-templates>
             </xsl:when>
             <xsl:otherwise>
-                <td>
+                <xsl:variable name="elname">
+                    <xsl:choose>
+                        <xsl:when test="text:p[@text:style-name='Table_20_Heading']">th</xsl:when>
+                        <xsl:otherwise>td</xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                <xsl:element name="{$elname}">
                     <xsl:choose>
                         <xsl:when test="$column/@table:visibility='collapse'">
                             <xsl:attribute name="style">display:none;</xsl:attribute>
@@ -536,7 +548,7 @@
                     </xsl:if>
                     <!--<xsl:value-of select="$position"/>-->
                     <xsl:apply-templates select="." mode="cellvalue"/>
-                </td>
+                </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
