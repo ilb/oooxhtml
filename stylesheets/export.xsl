@@ -806,7 +806,7 @@
     </xsl:template>
 
     <xsl:template match="text:span">
-        <xsl:if test="normalize-space(.)">
+        <!--<xsl:if test="normalize-space(.)">-->
             <xsl:variable name="styleName" select="@text:style-name"/>
             <xsl:variable name="style">
                 <xsl:apply-templates select="@text:style-name" mode="expandcss"/>
@@ -852,7 +852,7 @@
                     </span>
                 </xsl:otherwise>
             </xsl:choose>
-        </xsl:if>
+        <!--</xsl:if>-->
     </xsl:template>
 
     <xsl:template match="*| @*" />

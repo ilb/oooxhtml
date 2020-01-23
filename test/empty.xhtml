@@ -26,7 +26,7 @@
           <p>marked list</p>
         </li>
         <li>
-          <p>item<span class="annotation"><span><span class="content">Тест</span><span class="creator" title="2020-01-10T12:38:59">Вячеслав Владимирович Борисов</span></span></span></p>
+          <p>item<span class="annotation"><span><span class="content">Тест</span><span class="creator" title="2020-01-10T12:38:59">Вячеслав Владимирович Борисов</span></span></span>Заголовок 2</p>
         </li>
       </ul>
       <h1 id="zagolovok1">
@@ -45,10 +45,82 @@
       <p>Что же делать, если отпуск уже давно прошел, море совсем далеко, да и какое тут веселье - на дворе ноябрь? А ведь так хочется снова там оказаться, посидеть на берегу, послушать шум моря, писк чаек и звуки разбивающихся о камни волн?</p>
       <p>Выход есть, друзья! Связан он с особенностями восприятия информации человеком. Около 90% информации человек получает при помощи глаз - визуальный тип восприятия информации, примерно 9% — при помощи органов слуха и всего 1% при помощи остальных органов чувств (осязания, вкуса и обоняния).</p>
       <p>Итак, включаем атмосферу звуков моря, можно прилечь, закрыть глаза (тем самым отключив 90% восприятия информации) и вот, мы снова на море :)</p>
-      <p>Такая аудиолизация благоприятно влияет на настроение, успокаивая и расслабляя, а также на предстоящий сон. Под <span class="Strong_20_Emphasis">шум моря</span> можно проводить сеансы массажа и медитации, и даже - спать.</p>
-      <p>Те <span class="Strong_20_Emphasis">звуки моря</span>, шум морских волн и крики чаек, которые мы предлагаем вам прослушать онлайн, были записаны в метре от настоящего моря с двух микрофонов, один из которых был установлен в небольшой заводи, возле камней, а второй на берегу.</p>
+      <p>Такая аудиолизация благоприятно влияет на настроение, успокаивая и расслабляя, а также на предстоящий сон. Под шум моря можно проводить сеансы массажа и медитации, и даже - спать.</p>
+      <p>Те звуки моря, шум морских волн и крики чаек, которые мы предлагаем вам прослушать онлайн, были записаны в метре от настоящего моря с двух микрофонов, один из которых был установлен в небольшой заводи, возле камней, а второй на берегу.</p>
       <p>Также очень хорошо можно слышать звук гальчатых камней, которые трутся друг об друга под накатами волн.</p>
       <p>Таким образом, происходит наложение двух морских звуков - шум волн в отдалении и плеск морской воды вблизи, у камней, что делает ощущения присутствия более натуральными</p>
+      <h3 id="primer_rasceta">
+        <a class="anchor" href="#primer_rasceta">Пример расчета</a>
+      </h3>
+      <pre>
+        <span class="Source_20_Text">    /**</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">     * Расчет суммы процентов за период. Проценты разбиваются на периоды начисления. Дата начисления процентов - последний день месяца.</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">     *</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">     * @param rate ставка годовая</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">     * @param amount база для начисления процентов</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">     * @param dt1 дата начала периода (+1 день от предыдущего начисления или уплаты процентов)</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">     * @param dt2 дата окончания периода</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">     *</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">     * @return</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">     */</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">    private BigDecimal calcInterestAmountPeriod(BigDecimal rate, BigDecimal amount, LocalDate dt1, LocalDate dt2) {</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">        if (dt1.getMonth().equals(dt2.getMonth())) {</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">            return BigDecimal.valueOf(amount.doubleValue() * rate.doubleValue() * (double) (ChronoUnit.DAYS.between(dt1, dt2) + 1) / (double) dt2.lengthOfYear()).setScale(2, RoundingMode.HALF_UP);</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">        } else {</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">            LocalDate lastDayOfMonth = dt1.with(TemporalAdjusters.lastDayOfMonth());</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">            return calcInterestAmountPeriod(rate, amount, dt1, lastDayOfMonth)</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">                    .add(calcInterestAmountPeriod(rate, amount, lastDayOfMonth.plusDays(1), dt2));</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">        }</span>
+      </pre>
+      <pre>
+        <span class="Source_20_Text">    }</span>
+      </pre>
+      <h3 id="probel_">
+        <a class="anchor" href="#probel_">
+          <span class="Source_20_Text">Пробелы</span>
+        </a>
+      </h3>
+      <ol>
+        <li>
+          <p>
+            <span class="Source_20_Text">Безналичная оплата коммунальных и прочих услуг, осуществляемых в соответствии с заключенными Банком соглашениями об организованном перечислении платежей от физических лиц в пользу юридических лиц и индивидуальных предпринимателей.</span>
+          </p>
+        </li>
+      </ol>
     </div>
   </body>
 </html>
