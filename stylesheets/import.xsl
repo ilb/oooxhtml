@@ -959,6 +959,18 @@
             <xsl:apply-templates />
         </text:span>
     </xsl:template>
+    <xsl:template match="x:cite">
+        <text:span text:style-name="Citation">
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates />
+        </text:span>
+    </xsl:template>
+    <xsl:template match="x:blockquote">
+        <text:p text:style-name="Quotations">
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates />
+        </text:p>
+    </xsl:template>
     <xsl:template match="x:a">
         <xsl:choose>
             <xsl:when test="@class='anchor'">

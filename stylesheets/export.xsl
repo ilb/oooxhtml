@@ -634,6 +634,12 @@
             <xsl:apply-templates />
         </pre>
     </xsl:template>
+    <xsl:template match="text:p[@text:style-name='Quotations']">
+        <blockquote>
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates />
+        </blockquote>
+    </xsl:template>
 
     <xsl:template match="text:s">
         <xsl:param name="remaining" select="@text:c"/>
@@ -805,6 +811,12 @@
         </xsl:if>
     </xsl:template>
 
+    <xsl:template match="text:span[@text:style-name='Citation']">
+        <cite>
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates />
+        </cite>
+    </xsl:template>
     <xsl:template match="text:span">
         <!--<xsl:if test="normalize-space(.)">-->
             <xsl:variable name="styleName" select="@text:style-name"/>
