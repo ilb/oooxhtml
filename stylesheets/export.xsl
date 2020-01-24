@@ -702,7 +702,20 @@
     </xsl:template>
     <!-- не пустой список -->
     <xsl:template match="text:list[text:list-item]">
-        <xsl:variable name="styleName" select="@text:style-name"/>
+        <xsl:variable name="styleName" >
+            <xsl:choose>
+                <xsl:when test="@text:style-name">
+                    <xsl:value-of select="@text:style-name"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="ancestor::text:list[@text:style-name]/@text:style-name"/>
+
+<!--                    <xsl:variable name="itemStyleName" select="text:list-item[1]/text:p[1]/@text:style-name"/>
+                    <xsl:variable name="itemStyle" select = "/*/office:automatic-styles/style:style[@style:name=$itemStyleName]"/>
+                    <xsl:value-of select="$itemStyle/@style:list-style-name"/>-->
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         <xsl:variable name="style" select = "/*/office:automatic-styles/text:list-style[@style:name=$styleName]"/>
         <xsl:choose>
             <xsl:when test="$style/text:list-level-style-number[@text:level='1']">
