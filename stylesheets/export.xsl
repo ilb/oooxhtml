@@ -50,8 +50,8 @@
     <xsl:param name="convertstyles" select="true()"/>
     <xsl:param name="convertcolorstyles" select="true()"/>
     <!-- translit -->
-    <xsl:variable name="translit_rus" select="'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ .,;/?\/«»()'"/>
-    <xsl:variable name="translit_eng" select="'abvgdeеzzijklmnoprstufhccss___eyjabvgdeеzzijklmnoprstufhccss___eyj______\/____'"/>
+    <xsl:variable name="translit_rus" select="'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ .,;/?\/«»!@#$%^*()&amp;'"/>
+    <xsl:variable name="translit_eng" select="'abvgdeеzzijklmnoprstufhccss___eyjabvgdeеzzijklmnoprstufhccss___eyj______\/____________'"/>
     <!-- replace in export.xsl and import.xsl -->
     <xsl:variable name="generator_version" select="'1.4'"/>
     <xsl:param name="copystyles" select="'Good,Neutral,Bad,Warning,Error,First_20_line_20_indent'"/>
