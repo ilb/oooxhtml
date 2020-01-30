@@ -1062,8 +1062,13 @@
         </draw:frame>
     </xsl:template>
 
+    <xsl:template match="x:object[@type='image/svg+xml']">
+        <draw:frame draw:style-name="img" text:anchor-type="paragraph" draw:z-index="0">
+            <draw:image xlink:href="{@data}"/>
+        </draw:frame>
+    </xsl:template>
     <xsl:template match="x:img">
-        <draw:frame draw:style-name="img" draw:name="{@alt}" text:anchor-type="paragraph" draw:z-index="0">
+        <draw:frame draw:style-name="img" draw:name="{@alt}" text:anchor-type="paragraph" draw:z-index="0"> <!-- style:rel-width="100%" style:rel-height="100%" -->
             <xsl:for-each select="str:tokenize(@style,';')">
                 <xsl:variable name="attr" select="normalize-space(substring-before(.,':'))"/>
                 <xsl:variable name="value" select="normalize-space(substring-after(.,':'))"/>

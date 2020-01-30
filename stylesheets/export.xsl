@@ -710,7 +710,7 @@
                 <xsl:otherwise>
                     <xsl:value-of select="ancestor::text:list[@text:style-name]/@text:style-name"/>
 
-<!--                    <xsl:variable name="itemStyleName" select="text:list-item[1]/text:p[1]/@text:style-name"/>
+                    <!--                    <xsl:variable name="itemStyleName" select="text:list-item[1]/text:p[1]/@text:style-name"/>
                     <xsl:variable name="itemStyle" select = "/*/office:automatic-styles/style:style[@style:name=$itemStyleName]"/>
                     <xsl:value-of select="$itemStyle/@style:list-style-name"/>-->
                 </xsl:otherwise>
@@ -770,30 +770,36 @@
     <xsl:template match="draw:object">
         <xsl:apply-templates />
     </xsl:template>
-    <!-- не выводим повторяющиеся изображения, например вставка svg в документ сохраняется как два изображения -->
-    <xsl:template match="draw:image[not(preceding-sibling::draw:image) and (@xlink:href or office:binary-data)]">
-        <img alt="{../@draw:name}" style="width:{../@svg:width};height:{../@svg:height}"> <!-- left:{../@svg:x};top:{../@svg:y}; -->
-            <xsl:attribute name="src">
-                <xsl:choose>
-                    <xsl:when test="normalize-space(@xlink:href)">
-                        <xsl:value-of select="@xlink:href"/>
-                    </xsl:when>
-                    <xsl:when test="office:binary-data">
-                        <xsl:value-of select="concat('data:',@loext:mime-type,';base64,',translate(office:binary-data,' &#10;',''))"/>
-                    </xsl:when>
-                </xsl:choose>
-            </xsl:attribute>
-            <!--            <xsl:attribute name="width">
-                <xsl:call-template name="convert2px">
-                    <xsl:with-param name="value" select="@svg:width" />
-                </xsl:call-template>
-            </xsl:attribute>
-            <xsl:attribute name="height">
-                <xsl:call-template name="convert2px">
-                    <xsl:with-param name="value" select="@svg:height" />
-                </xsl:call-template>
-            </xsl:attribute>-->
-        </img>
+
+    <xsl:template match="draw:image[contains(@xlink:href,'.svg') and not(preceding-sibling::draw:image)]">
+        <object data="{@xlink:href}" type="image/svg+xml"/>
+    </xsl:template>
+    <xsl:template match="draw:image">
+        <!-- не выводим повторяющиеся изображения, например вставка svg в документ сохраняется как два изображения -->
+        <xsl:if test="(@xlink:href or office:binary-data) and not(preceding-sibling::draw:image)">
+            <img alt="{../@draw:name}" style="width:{../@svg:width};height:{../@svg:height}"> <!-- left:{../@svg:x};top:{../@svg:y}; -->
+                <xsl:attribute name="src">
+                    <xsl:choose>
+                        <xsl:when test="normalize-space(@xlink:href)">
+                            <xsl:value-of select="@xlink:href"/>
+                        </xsl:when>
+                        <xsl:when test="office:binary-data">
+                            <xsl:value-of select="concat('data:',@loext:mime-type,';base64,',translate(office:binary-data,' &#10;',''))"/>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:attribute>
+                <!--            <xsl:attribute name="width">
+                    <xsl:call-template name="convert2px">
+                        <xsl:with-param name="value" select="@svg:width" />
+                    </xsl:call-template>
+                </xsl:attribute>
+                <xsl:attribute name="height">
+                    <xsl:call-template name="convert2px">
+                        <xsl:with-param name="value" select="@svg:height" />
+                    </xsl:call-template>
+                </xsl:attribute>-->
+            </img>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="text:h" mode="id">
@@ -832,51 +838,51 @@
     </xsl:template>
     <xsl:template match="text:span">
         <!--<xsl:if test="normalize-space(.)">-->
-            <xsl:variable name="styleName" select="@text:style-name"/>
-            <xsl:variable name="style">
-                <xsl:apply-templates select="@text:style-name" mode="expandcss"/>
-            </xsl:variable>
+        <xsl:variable name="styleName" select="@text:style-name"/>
+        <xsl:variable name="style">
+            <xsl:apply-templates select="@text:style-name" mode="expandcss"/>
+        </xsl:variable>
 
-            <xsl:choose>
-                <!-- не автоматический стиль -->
-                <xsl:when test = "/*/office:styles/style:style[@style:name=$styleName]">
-                    <span class="{$styleName}">
-                        <xsl:apply-templates select="@*"/>
-                        <xsl:apply-templates />
-                    </span>
-                </xsl:when>
-                <!-- упрощаем простые стили -->
-                <xsl:when test="$style='font-weight:bold;'">
-                    <b>
-                        <xsl:apply-templates />
-                    </b>
-                </xsl:when>
-                <xsl:when test="contains($style,'vertical-align:sub;font-size:smaller;')">
-                    <sub>
-                        <xsl:apply-templates />
-                    </sub>
-                </xsl:when>
-                <xsl:when test="contains($style,'vertical-align:super;font-size:smaller;')">
-                    <sup>
-                        <xsl:apply-templates />
-                    </sup>
-                </xsl:when>
-                <xsl:when test="$style='font-style:italic;'">
-                    <i>
-                        <xsl:apply-templates />
-                    </i>
-                </xsl:when>
-                <!-- если стили не сконвертировались, выведем текст без span ? -->
-                <xsl:when test="$style=''">
+        <xsl:choose>
+            <!-- не автоматический стиль -->
+            <xsl:when test = "/*/office:styles/style:style[@style:name=$styleName]">
+                <span class="{$styleName}">
+                    <xsl:apply-templates select="@*"/>
                     <xsl:apply-templates />
-                </xsl:when>
-                <xsl:otherwise>
-                    <span>
-                        <xsl:apply-templates select="@*"/>
-                        <xsl:apply-templates />
-                    </span>
-                </xsl:otherwise>
-            </xsl:choose>
+                </span>
+            </xsl:when>
+            <!-- упрощаем простые стили -->
+            <xsl:when test="$style='font-weight:bold;'">
+                <b>
+                    <xsl:apply-templates />
+                </b>
+            </xsl:when>
+            <xsl:when test="contains($style,'vertical-align:sub;font-size:smaller;')">
+                <sub>
+                    <xsl:apply-templates />
+                </sub>
+            </xsl:when>
+            <xsl:when test="contains($style,'vertical-align:super;font-size:smaller;')">
+                <sup>
+                    <xsl:apply-templates />
+                </sup>
+            </xsl:when>
+            <xsl:when test="$style='font-style:italic;'">
+                <i>
+                    <xsl:apply-templates />
+                </i>
+            </xsl:when>
+            <!-- если стили не сконвертировались, выведем текст без span ? -->
+            <xsl:when test="$style=''">
+                <xsl:apply-templates />
+            </xsl:when>
+            <xsl:otherwise>
+                <span>
+                    <xsl:apply-templates select="@*"/>
+                    <xsl:apply-templates />
+                </span>
+            </xsl:otherwise>
+        </xsl:choose>
         <!--</xsl:if>-->
     </xsl:template>
 
