@@ -58,8 +58,8 @@ var openDocHistory = function () {
     var css = '.edit-menu { position: fixed; top: 1rem; right: 1rem; opacity: 0.8; transition: all 0.3s ease-out; z-index: 100; }' +
               '.edit-menu:hover { opacity: 1; }' +
               '.edit-menu button { font-size: 1.3rem; height: 2.3rem; min-width: 2.3rem }';
-    var head = document.head || document.getElementsByTagNameNS('http://www.w3.org/1999/xhtml','head')[0];
-    var style = document.createElementNS('http://www.w3.org/1999/xhtml','style');
+    var head = document.head || document.getElementsByTagName('head')[0];
+    var style = document.createElement('style');
 
     style.type = 'text/css';
     style.appendChild(document.createTextNode(css));
@@ -68,28 +68,28 @@ var openDocHistory = function () {
   };
 
   var appendEditMenu = function() {
-    var editMenu = document.createElementNS('http://www.w3.org/1999/xhtml','div');
+    var editMenu = document.createElement('div');
     editMenu.className = 'edit-menu';
 
-    var editButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
+    var editButton = document.createElement('button');
     editButton.innerHTML = '\u270e';
     editButton.setAttribute('title', 'Редактировать (alt+E)');
     editButton.setAttribute('onclick', 'editDoc()');
     editMenu.appendChild(editButton);
 
-    var historyButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
+    var historyButton = document.createElement('button');
     historyButton.innerHTML = '\u25f4';
     historyButton.setAttribute('title', 'История изменений (alt+H)');
     historyButton.setAttribute('onclick', 'openDocHistory()');
     editMenu.appendChild(historyButton);
 
-    var helpButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
+    var helpButton = document.createElement('button');
     helpButton.innerHTML = '?';
     helpButton.setAttribute('title', 'Справка');
     helpButton.setAttribute('onclick', 'window.open("https://docs.ilb.ru/oooxhtml/readme.xhtml")');
     editMenu.appendChild(helpButton);
 
-    var body = document.body || document.getElementsByTagNameNS('http://www.w3.org/1999/xhtml','body')[0];
+    var body = document.body || document.getElementsByTagName('body')[0];
     body.appendChild(editMenu);
     console.log('editMenu created');
   };
@@ -128,15 +128,16 @@ var openDocHistory = function () {
 
   var appendStyles = function() {
     var css = '.sidebar-menu { position: fixed; top: 0; left: 0rem; min-width: 20rem; max-width: 90vw; overflow: auto; height: 100vh; ' +
-                'padding: 1rem 1rem 1rem 2rem; border: 1px solid black; background: #fff; box-sizing: border-box; font-size: 1rem;' +
+                'padding: 1rem 1rem 1rem 2rem; background: #fff; font-size: 1rem;' +
                 '-moz-transform: translateX(-100%); -webkit-transform: translateX(-100%); transform: translateX(-100%);' +
                 'transition: all 0.1s ease-out;' +
               '}' +
-              '.sidebar:hover .sidebar-menu { -moz-transform: none; -webkit-transform: none; transform: none; }' +
+              '.sidebar:hover .sidebar-menu { -moz-transform: none; -webkit-transform: none; transform: none; box-shadow: 0 0 20px rgba(23, 32, 30, 0.3); }' +
               '.sidebar-label { position: fixed; top: 0; left: 0; background: rgb(0,90,156); color: white; z-index: 1; font-size: 1.3rem; padding: 0.6rem; opacity: 0.8; }' +
               '.sidebar .current { background: lightblue }' +
-              '.sidebar-dir-btn { background: white; border: 0; outline: none; width: 1.5rem; height: 1rem; }';
-    var head = document.head || document.getElementsByTagNameNS('http://www.w3.org/1999/xhtml','head')[0];
+              '.sidebar-dir-btn { background: white; border: 0; outline: none; width: 1.5rem; height: 1rem; }' +
+              '.sidebar-hidden { display: none; }';
+    var head = document.head || document.getElementsByTagName('head')[0];
     var style = document.createElementNS('http://www.w3.org/1999/xhtml','style');
 
     style.type = 'text/css';
@@ -158,14 +159,14 @@ var openDocHistory = function () {
     sidebarMenu.className = 'sidebar-menu';
     sidebarMenu.innerHTML = 'Loading...';
     sidebar.appendChild(sidebarMenu);
-    var body = document.body || document.getElementsByTagNameNS('http://www.w3.org/1999/xhtml','body')[0];
+    var body = document.body || document.getElementsByTagName('body')[0];
     body.appendChild(sidebar);
     console.log('sidebar created');
   };
 
   var highlightCurrent = function(content) {
     var anchors = content && content.querySelectorAll && content.querySelectorAll('a');
-    var currentUrl = location.href.replace('?', '#').split('#')[0];
+    var currentUrl = location.href.split(/\?|\#/)[0];
     if (anchors && anchors.length) {
       [].forEach.call(anchors, function (anchor) {
         if (decodeURIComponent(anchor.href) === decodeURIComponent(currentUrl)) {
@@ -183,53 +184,134 @@ var openDocHistory = function () {
     if (!table || !table.querySelectorAll) { return table; }
     var menuElems = [];
     var trs = table.querySelectorAll('tr');
+    var count = 0;
     [].forEach.call(trs, function (tr) {
       var tds = tr.querySelectorAll('td');
       if (!tds || tds.length < 3) { return; }
       var a = tds[0].querySelector('a');
       if (!a) { return; }
-      menuElems.push({
-        link: (parent && parent.href && !/^\//.test(a.href)) ? parent.href + a.getAttribute('href') : a.href,
+      var link = (parent && parent.href && !/^\//.test(a.href)) ? parent.href + a.getAttribute('href') : a.href;
+      var menuElem = {
+        link: link,
         name: (a.textContent || a.innerText || '').trim(),
         description: tds[3] && (tds[3].textContent || tds[3].innerText || '').trim()
-      });
+      };
+      menuElem.isDirectory = /\/$/.test(menuElem.name);
+      menuElem.displayName = (menuElem.description || menuElem.name).replace(/\/$/, '');
+
+      if (count === 0 && menuElem.name.toLowerCase() === 'parent directory') {
+        menuElem.displayName = 'Родительский каталог';
+        menuElem.parentLink = true;
+      }
+
+      menuElems.push(menuElem);
+      count++;
     });
 
+    menuElems = prepareVirtualDirs(menuElems);
+
     if (!menuElems.length) { return table; }
-    menuElems = menuElems.filter(function(el) {
-      return el && el.link && el.name && (el.name.toLowerCase() !== 'parent directory' || !parent);
-    });
+    menuElems = menuElems.filter(function(el) { return el && (!el.parentLink || !parent); }); // remove parent directory link from sub menu
     if (!menuElems.length) { menuElems.push({ name: 'Пустой каталог' }); }
+    return createMenuList(menuElems);
+  };
+
+  var createMenuList = function(menuElems) {
     var newMenu = document.createElementNS('http://www.w3.org/1999/xhtml','ul');
     newMenu.style.listStyleType = 'none';
-    var currentUrl = location.href.replace('?', '#').split('#')[0];
-    menuElems.forEach(function(menuElem, index) {
+    var currentUrl = location.href.split(/\?|\#/)[0];
+    menuElems.forEach(function(menuElem) {
       var li = document.createElementNS('http://www.w3.org/1999/xhtml','li');
-      if (index === 0 && menuElem.name.toLowerCase() === 'parent directory') {
-        li.style.marginLeft = '-1rem';
-        menuElem.name = 'Родительский каталог';
-      }
-      if (/\/$/.test(menuElem.name)) {
+      if (menuElem.parentLink) { li.style.marginLeft = '-1rem'; }
+      if (menuElem.isDirectory) {
         var button = document.createElementNS('http://www.w3.org/1999/xhtml','button');
         button.className = 'sidebar-dir-btn';
         button.innerHTML = '+';
-        // button.setAttribute('onclick', 'openSidebarDir()');
         button.addEventListener('click', openSidebarDir);
         li.appendChild(button);
         li.style.marginLeft = '-1.5rem';
       }
 
-      var anchor = document.createElementNS('http://www.w3.org/1999/xhtml',menuElem.link ? 'a' : 'span');
+      var anchor = document.createElementNS('http://www.w3.org/1999/xhtml', menuElem.link ? 'a' : 'span');
       anchor.setAttribute('href', menuElem.link);
-      anchor.innerHTML = (menuElem.description || menuElem.name).replace(/\/$/, '');
+      anchor.innerHTML = menuElem.displayName;
       li.appendChild(anchor);
+
+      if (menuElem.childrens) {
+        var subtree = document.createElementNS('http://www.w3.org/1999/xhtml','div');
+        subtree.className = 'sidebar-subtree sidebar-virtual sidebar-hidden';
+        subtree.appendChild(createMenuList(menuElem.childrens));
+        li.appendChild(subtree);
+      }
 
       if (decodeURIComponent(menuElem.link) === decodeURIComponent(currentUrl)) {
         li.classList.add('current');
+
+        // open virtual sum menus on current active link
+        setTimeout(function () {
+          var parentNode = li.parentNode;
+          while (parentNode && parentNode.classList) {
+            if (parentNode.classList.contains('sidebar-hidden')) {
+              parentNode.parentNode.querySelector('.sidebar-dir-btn').click();
+            }
+            parentNode = parentNode.parentNode;
+          }
+        }, 10);
       }
       newMenu.appendChild(li);
     });
     return newMenu;
+  };
+
+  var prepareVirtualDirs = function(menuElems) {
+    if (!menuElems || !menuElems.length) { return; }
+    var newMenuElems = [];
+    menuElems.forEach(function(menuElem) {
+      var nameParts = menuElem.displayName.split('|');
+      if (nameParts.length > 1) {
+        menuElem.isDirectory = true;
+        menuElem.displayName = nameParts[0].trim();
+        var childrenName = nameParts.slice(1).join('|').trim();
+        var children = {
+          name: childrenName,
+          isDirectory: nameParts.length > 2,
+          displayName: childrenName,
+          link: menuElem.link
+        };
+        menuElem.link = null;
+
+        var existedElem = [].reduce.call(newMenuElems, function (w, e) { return w || (e.displayName === menuElem.displayName && e.childrens) ? e : null }, null);
+        if (existedElem) {
+          existedElem.childrens.push(children);
+          return;
+        } else {
+          menuElem.childrens = [children],
+          newMenuElems.push(menuElem);
+        }
+      } else {
+        newMenuElems.push(menuElem);
+      }
+    });
+
+
+    newMenuElems.forEach(function(menuElem) {
+      if (menuElem.childrens) {
+        menuElem.childrens = prepareVirtualDirs(menuElem.childrens);
+      }
+    });
+
+    newMenuElems.sort(sortMenuStrategy);
+    return newMenuElems;
+  };
+
+  var sortMenuStrategy = function(a, b) {
+    if (a.parentLink && !b.parentLink) { return -1; }
+    if (!a.parentLink && b.parentLink) { return 1; }
+    if (a.isDirectory && !b.isDirectory) { return -1; }
+    if (!a.isDirectory && b.isDirectory) { return 1; }
+    if (a.displayName.toLowerCase() < a.displayName.toLowerCase()) { return -1; }
+    if (a.displayName.toLowerCase() > a.displayName.toLowerCase()) { return 1; }
+    return 0;
   };
 
   var openSidebarDir = function(e) {
@@ -239,11 +321,25 @@ var openDocHistory = function () {
     button.setAttribute('disabled', 'disabled');
 
     var subtree = button.parentNode.querySelector('.sidebar-subtree');
+    var isVirtual = subtree && subtree.classList.contains('sidebar-virtual');
+    if (isVirtual) {
+      var classMethod = nextText === '-' ? 'remove' : 'add';
+      subtree.classList[classMethod]('sidebar-hidden');
+      if (classMethod === 'add') { // close all inner virtual sub menus
+        var dirBtns = subtree.querySelectorAll('.sidebar-dir-btn');
+        [].forEach.call(dirBtns, function (dirBtn) {
+          if (dirBtn.innerHTML === '-') { dirBtn.click(); }
+        })
+      }
+      button.removeAttribute('disabled', 'disabled');
+      button.innerHTML = nextText;
+      return;
+    }
     if (subtree) { subtree.parentNode.removeChild(subtree); }
     if (nextText === '-') {
       var link = button.parentNode.querySelector('a');
-      var url = link.href;
-      var subtree = document.createElementNS('http://www.w3.org/1999/xhtml','div');
+      var url = link && link.href;
+      subtree = document.createElementNS('http://www.w3.org/1999/xhtml','div');
       subtree.className = 'sidebar-subtree';
       loadContent({
         url: url,
@@ -337,7 +433,7 @@ var openDocHistory = function () {
   appendSidebar();
   fillSidebarContent();
 }());
-window.onload=function() {
+;window.onload=function() {
     if (document.location.hash) {
         document.location = document.location;
         console.log('xslt trick: reload hash location ');
