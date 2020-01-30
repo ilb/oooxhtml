@@ -68,7 +68,7 @@
       <h1 id="zagolovok3">
         <a class="anchor" href="#zagolovok3">Заголовок 3</a>
       </h1>
-      <p style="text-align:justify;">Вы когда-нибудь спрашивали своих друзей или близких, что для них значит море? Спросите, любопытства ради. Уверен, все ответы будут разные и одновременно одинаково положительные. Кто-то скажет, что море- это полет и вдохновение; кто-то- что мощь и умиротворение; а кто-то назовет море отпуском и счастливыми летними днями, в первую очередь. Чаще других в этих ответах вам будут встречаться слова: свобода, безмятежность, отдых, веселье, красота, лето, жизнь…</p>
+      <p class="First_20_line_20_indent" style="text-align:justify;">Вы когда-нибудь спрашивали своих друзей или близких, что для них значит море? Спросите, любопытства ради. Уверен, все ответы будут разные и одновременно одинаково положительные. Кто-то скажет, что море- это полет и вдохновение; кто-то- что мощь и умиротворение; а кто-то назовет море отпуском и счастливыми летними днями, в первую очередь. Чаще других в этих ответах вам будут встречаться слова: свобода, безмятежность, отдых, веселье, красота, лето, жизнь…</p>
       <p>Нет, обязательно найдутся и такие, которые скажут, что море- это просто большая лужа соленой воды; или, как сказал мой дядя (капитан дальнего плавания) : "Море – это десять месяцев в рейсе..."</p>
       <p>Но в глубине души и они испытывают особые чувства к морю.</p>
       <p>Помните, как в фильме "Достучаться до небес" - "На небесах только и говорят, что о море. Стоишь на берегу и чувствуешь соленый запах ветра, что веет с моря, и веришь, что свободен ты, и жизнь лишь началась, и губы жжет подруги поцелуй, пропитанный слезой!".</p>
@@ -82,120 +82,31 @@
       <h3 id="primer_rasceta">
         <a class="anchor" href="#primer_rasceta">Пример расчета</a>
       </h3>
-      <pre>
-        <span class="Source_20_Text">    /**</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">     * Расчет суммы процентов за период. Проценты разбиваются на периоды начисления. Дата начисления процентов - последний день месяца.</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">     *</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">     * @param rate ставка годовая</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">     * @param amount база для начисления процентов</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">     * @param dt1 дата начала периода (+1 день от предыдущего начисления или уплаты процентов)</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">     * @param dt2 дата окончания периода</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">     *</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">     * @return</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">     */</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">    private BigDecimal calcInterestAmountPeriod(BigDecimal rate, BigDecimal amount, LocalDate dt1, LocalDate dt2) {</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">        if (dt1.getMonth().equals(dt2.getMonth())) {</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">            return BigDecimal.valueOf(amount.doubleValue() * rate.doubleValue() * (double) (ChronoUnit.DAYS.between(dt1, dt2) + 1) / (double) dt2.lengthOfYear()).setScale(2, RoundingMode.HALF_UP);</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">        } else {</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">            LocalDate lastDayOfMonth = dt1.with(TemporalAdjusters.lastDayOfMonth());</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">            return calcInterestAmountPeriod(rate, amount, dt1, lastDayOfMonth)</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">                    .add(calcInterestAmountPeriod(rate, amount, lastDayOfMonth.plusDays(1), dt2));</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">        }</span>
-      </pre>
-      <pre>
-        <span class="Source_20_Text">    }</span>
-      </pre>
+      <pre>    /**</pre>
+      <pre>     * Расчет суммы процентов за период. Проценты разбиваются на периоды начисления. Дата начисления процентов - последний день месяца.</pre>
+      <pre>     *</pre>
+      <pre>     * @param rate ставка годовая</pre>
+      <pre>     * @param amount база для начисления процентов</pre>
+      <pre>     * @param dt1 дата начала периода (+1 день от предыдущего начисления или уплаты процентов)</pre>
+      <pre>     * @param dt2 дата окончания периода</pre>
+      <pre>     *</pre>
+      <pre>     * @return</pre>
+      <pre>     */</pre>
+      <pre>    private BigDecimal calcInterestAmountPeriod(BigDecimal rate, BigDecimal amount, LocalDate dt1, LocalDate dt2) {</pre>
+      <pre>        if (dt1.getMonth().equals(dt2.getMonth())) {</pre>
+      <pre>            return BigDecimal.valueOf(amount.doubleValue() * rate.doubleValue() * (double) (ChronoUnit.DAYS.between(dt1, dt2) + 1) / (double) dt2.lengthOfYear()).setScale(2, RoundingMode.HALF_UP);</pre>
+      <pre>        } else {</pre>
+      <pre>            LocalDate lastDayOfMonth = dt1.with(TemporalAdjusters.lastDayOfMonth());</pre>
+      <pre>            return calcInterestAmountPeriod(rate, amount, dt1, lastDayOfMonth)</pre>
+      <pre>                    .add(calcInterestAmountPeriod(rate, amount, lastDayOfMonth.plusDays(1), dt2));</pre>
+      <pre>        }</pre>
+      <pre>    }</pre>
       <h3 id="probel_">
-        <a class="anchor" href="#probel_">
-          <span class="Source_20_Text">Пробелы</span>
-        </a>
+        <a class="anchor" href="#probel_">Пробелы</a>
       </h3>
       <ol>
         <li>
-          <p style="text-align:justify;">
-            <span class="Source_20_Text">Б</span>
-            <span class="Source_20_Text">езналичная оплата </span>
-            <span class="Source_20_Text">коммунальных</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">и</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">прочих</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">услуг,</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">осуществляемых</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">в</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">соответствии с з</span>
-            <span class="Source_20_Text">аключенны</span>
-            <span class="Source_20_Text">ми</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">Б</span>
-            <span class="Source_20_Text">анком</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">соглашени</span>
-            <span class="Source_20_Text">ями</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">об</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">организованном</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">перечислении</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">платежей</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">от</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">физических</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">лиц</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">в</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">пользу</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">юридическ</span>
-            <span class="Source_20_Text">их</span>
-            <span class="Source_20_Text"> </span>
-            <span class="Source_20_Text">лиц </span>
-            <span class="Source_20_Text">и индивидуальных предпринимателей</span>
-            <span class="Source_20_Text">.</span>
-          </p>
+          <p>Безналичная оплата коммунальных и прочих услуг, осуществляемых в соответствии с заключенными Банком соглашениями об организованном перечислении платежей от физических лиц в пользу юридических лиц и индивидуальных предпринимателей.</p>
         </li>
       </ol>
     </div>

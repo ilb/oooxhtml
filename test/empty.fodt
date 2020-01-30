@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <office:document xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ooo="http://openoffice.org/2004/office" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" office:version="1.2" office:mimetype="application/vnd.oasis.opendocument.text">
- <office:meta><dc:title/><dc:date>2020-01-24T14:19:19.265553489</dc:date><meta:editing-duration>PT2H4M13S</meta:editing-duration><meta:editing-cycles>14</meta:editing-cycles><meta:generator>LibreOffice/6.3.3.2.0$Linux_X86_64 LibreOffice_project/30$Build-2</meta:generator><dc:creator>Вячеслав Владимирович Борисов</dc:creator><meta:document-statistic meta:table-count="0" meta:image-count="0" meta:object-count="0" meta:page-count="2" meta:paragraph-count="49" meta:word-count="540" meta:character-count="3808" meta:non-whitespace-character-count="3190"/><meta:user-defined meta:name="HeadURL">$HeadURL: https://svn.ilb.ru/repos/oooxhtml/trunk/test/empty.xhtml $</meta:user-defined><meta:user-defined meta:name="xml-stylesheet">type=&quot;text/xsl&quot; href=&quot;/oooxhtml/oooxhtml.xsl&quot;</meta:user-defined></office:meta>
+ <office:meta><dc:title/><dc:date>2020-01-30T08:47:19.622454324</dc:date><meta:editing-duration>PT2H10M52S</meta:editing-duration><meta:editing-cycles>15</meta:editing-cycles><meta:generator>LibreOffice/6.3.3.2.0$Linux_X86_64 LibreOffice_project/30$Build-2</meta:generator><dc:creator>Вячеслав Владимирович Борисов</dc:creator><meta:document-statistic meta:table-count="0" meta:image-count="0" meta:object-count="0" meta:page-count="2" meta:paragraph-count="49" meta:word-count="540" meta:character-count="3808" meta:non-whitespace-character-count="3190"/><meta:user-defined meta:name="HeadURL">$HeadURL: https://svn.ilb.ru/repos/oooxhtml/trunk/test/empty.xhtml $</meta:user-defined><meta:user-defined meta:name="xml-stylesheet">type=&quot;text/xsl&quot; href=&quot;/oooxhtml/oooxhtml.xsl&quot;</meta:user-defined></office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
-   <config:config-item config:name="ViewAreaTop" config:type="long">0</config:config-item>
+   <config:config-item config:name="ViewAreaTop" config:type="long">5198</config:config-item>
    <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
    <config:config-item config:name="ViewAreaWidth" config:type="long">37091</config:config-item>
-   <config:config-item config:name="ViewAreaHeight" config:type="long">19606</config:config-item>
+   <config:config-item config:name="ViewAreaHeight" config:type="long">20542</config:config-item>
    <config:config-item config:name="ShowRedlineChanges" config:type="boolean">true</config:config-item>
    <config:config-item config:name="InBrowseMode" config:type="boolean">false</config:config-item>
    <config:config-item-map-indexed config:name="Views">
     <config:config-item-map-entry>
      <config:config-item config:name="ViewId" config:type="string">view2</config:config-item>
-     <config:config-item config:name="ViewLeft" config:type="long">12612</config:config-item>
-     <config:config-item config:name="ViewTop" config:type="long">6796</config:config-item>
+     <config:config-item config:name="ViewLeft" config:type="long">20020</config:config-item>
+     <config:config-item config:name="ViewTop" config:type="long">14730</config:config-item>
      <config:config-item config:name="VisibleLeft" config:type="long">0</config:config-item>
-     <config:config-item config:name="VisibleTop" config:type="long">0</config:config-item>
+     <config:config-item config:name="VisibleTop" config:type="long">5198</config:config-item>
      <config:config-item config:name="VisibleRight" config:type="long">37089</config:config-item>
-     <config:config-item config:name="VisibleBottom" config:type="long">19604</config:config-item>
+     <config:config-item config:name="VisibleBottom" config:type="long">25739</config:config-item>
      <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
      <config:config-item config:name="ViewLayoutColumns" config:type="short">1</config:config-item>
      <config:config-item config:name="ViewLayoutBookMode" config:type="boolean">false</config:config-item>
@@ -105,7 +105,7 @@
    <config:config-item config:name="EmbedAsianScriptFonts" config:type="boolean">true</config:config-item>
    <config:config-item config:name="TabAtLeftIndentForParagraphsInList" config:type="boolean">false</config:config-item>
    <config:config-item config:name="PrintRightPages" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="Rsid" config:type="int">2066339</config:config-item>
+   <config:config-item config:name="Rsid" config:type="int">2068152</config:config-item>
    <config:config-item config:name="MathBaselineAlignment" config:type="boolean">true</config:config-item>
    <config:config-item config:name="MsWordCompTrailingBlanks" config:type="boolean">false</config:config-item>
    <config:config-item config:name="InvertBorderSpacing" config:type="boolean">false</config:config-item>
@@ -202,6 +202,18 @@
   <style:style style:name="Table_20_Heading" style:display-name="Table Heading" style:family="paragraph" style:parent-style-name="Table_20_Contents" style:class="extra">
    <style:paragraph-properties fo:text-align="center" style:justify-single-word="false" text:number-lines="false" text:line-number="0"/>
    <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="Text_20_body_20_indent" style:display-name="Text body indent" style:family="paragraph" style:parent-style-name="Text_20_body" style:class="text">
+   <style:paragraph-properties fo:margin-left="0.499cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
+  </style:style>
+  <style:style style:name="List_20_Heading" style:display-name="List Heading" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="List_20_Contents" style:class="html">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
+  </style:style>
+  <style:style style:name="List_20_Contents" style:display-name="List Contents" style:family="paragraph" style:parent-style-name="Standard" style:class="html">
+   <style:paragraph-properties fo:margin-left="1cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
+  </style:style>
+  <style:style style:name="First_20_line_20_indent" style:display-name="First line indent" style:family="paragraph" style:parent-style-name="Text_20_body" style:class="text">
+   <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:text-indent="0.499cm" style:auto-text-indent="false"/>
   </style:style>
   <style:style style:name="Situation" style:family="text">
    <style:text-properties fo:color="#ed1c24"/>
@@ -309,16 +321,22 @@
   <style:style style:name="P3" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
   </style:style>
-  <style:style style:name="P4" style:family="paragraph" style:parent-style-name="Heading_20_1">
+  <style:style style:name="P4" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties officeooo:paragraph-rsid="001f87a3"/>
+  </style:style>
+  <style:style style:name="P5" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties officeooo:rsid="001f87a3" officeooo:paragraph-rsid="001f87a3"/>
+  </style:style>
+  <style:style style:name="P6" style:family="paragraph" style:parent-style-name="Heading_20_1">
    <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
   </style:style>
-  <style:style style:name="P5" style:family="paragraph" style:parent-style-name="Heading_20_2">
+  <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Heading_20_2">
    <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
   </style:style>
-  <style:style style:name="P6" style:family="paragraph" style:parent-style-name="Heading_20_3">
+  <style:style style:name="P8" style:family="paragraph" style:parent-style-name="Heading_20_3">
    <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
   </style:style>
-  <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P9" style:family="paragraph" style:parent-style-name="Standard">
    <loext:graphic-properties draw:fill="none"/>
    <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false" fo:text-indent="1cm" style:auto-text-indent="false" fo:background-color="transparent" style:writing-mode="lr-tb">
     <style:tab-stops>
@@ -327,34 +345,37 @@
    </style:paragraph-properties>
    <style:text-properties style:font-name="Arial" fo:font-size="10pt" officeooo:rsid="01cf3556" officeooo:paragraph-rsid="001f13fb" style:font-size-asian="10pt" style:font-size-complex="10pt"/>
   </style:style>
-  <style:style style:name="P8" style:family="paragraph" style:parent-style-name="Heading_20_1">
+  <style:style style:name="P10" style:family="paragraph" style:parent-style-name="First_20_line_20_indent">
+   <style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>
+  </style:style>
+  <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Heading_20_1">
    <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
   </style:style>
-  <style:style style:name="P9" style:family="paragraph" style:parent-style-name="Heading_20_2">
+  <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Heading_20_2">
    <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
   </style:style>
-  <style:style style:name="P10" style:family="paragraph" style:parent-style-name="Heading_20_3">
+  <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Heading_20_3">
    <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
   </style:style>
-  <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L1">
+  <style:style style:name="P14" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L1">
    <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
-  </style:style>
-  <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L1">
-   <style:text-properties officeooo:paragraph-rsid="001f87a3"/>
-  </style:style>
-  <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L2">
-   <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
-  </style:style>
-  <style:style style:name="P14" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L2">
-   <style:text-properties officeooo:paragraph-rsid="001f87a3"/>
   </style:style>
   <style:style style:name="P15" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L1">
    <style:text-properties officeooo:rsid="001f87a3" officeooo:paragraph-rsid="001f87a3"/>
   </style:style>
   <style:style style:name="P16" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties officeooo:rsid="001f87a3" officeooo:paragraph-rsid="001f87a3"/>
+  </style:style>
+  <style:style style:name="P17" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L2">
+   <style:text-properties officeooo:rsid="001f87a3" officeooo:paragraph-rsid="001f87a3"/>
+  </style:style>
+  <style:style style:name="P18" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L2">
    <style:text-properties officeooo:paragraph-rsid="001f87a3"/>
   </style:style>
-  <style:style style:name="P17" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L3">
+  <style:style style:name="P19" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L2">
+   <style:text-properties officeooo:paragraph-rsid="001f13fb"/>
+  </style:style>
+  <style:style style:name="P20" style:family="paragraph" style:parent-style-name="Standard" style:list-style-name="L3">
    <loext:graphic-properties draw:fill="none"/>
    <style:paragraph-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" loext:contextual-spacing="false" fo:text-align="justify" style:justify-single-word="false" fo:text-indent="1cm" style:auto-text-indent="false" fo:background-color="transparent" style:writing-mode="lr-tb">
     <style:tab-stops>
@@ -567,58 +588,6 @@
     </style:list-level-properties>
    </text:list-level-style-number>
   </text:list-style>
-  <text:list-style style:name="L4">
-   <text:list-level-style-bullet text:level="1" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.27cm" fo:text-indent="-0.635cm" fo:margin-left="1.27cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="2" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.905cm" fo:text-indent="-0.635cm" fo:margin-left="1.905cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="3" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.54cm" fo:text-indent="-0.635cm" fo:margin-left="2.54cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="4" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.175cm" fo:text-indent="-0.635cm" fo:margin-left="3.175cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="5" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.81cm" fo:text-indent="-0.635cm" fo:margin-left="3.81cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="6" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="4.445cm" fo:text-indent="-0.635cm" fo:margin-left="4.445cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="7" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.08cm" fo:text-indent="-0.635cm" fo:margin-left="5.08cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="8" text:style-name="Bullet_20_Symbols" text:bullet-char="◦">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="5.715cm" fo:text-indent="-0.635cm" fo:margin-left="5.715cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="9" text:style-name="Bullet_20_Symbols" text:bullet-char="▪">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.35cm" fo:text-indent="-0.635cm" fo:margin-left="6.35cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-   <text:list-level-style-bullet text:level="10" text:style-name="Bullet_20_Symbols" text:bullet-char="•">
-    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
-     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="6.985cm" fo:text-indent="-0.635cm" fo:margin-left="6.985cm"/>
-    </style:list-level-properties>
-   </text:list-level-style-bullet>
-  </text:list-style>
   <style:page-layout style:name="pm1">
    <style:page-layout-properties fo:page-width="21.001cm" fo:page-height="29.7cm" style:num-format="1" style:print-orientation="portrait" fo:margin-top="2cm" fo:margin-bottom="2cm" fo:margin-left="2cm" fo:margin-right="2cm" style:writing-mode="lr-tb" style:layout-grid-color="#c0c0c0" style:layout-grid-lines="20" style:layout-grid-base-height="0.706cm" style:layout-grid-ruby-height="0.353cm" style:layout-grid-mode="none" style:layout-grid-ruby-below="false" style:layout-grid-print="false" style:layout-grid-display="false" style:footnote-max-height="0cm">
     <style:footnote-sep style:width="0.018cm" style:distance-before-sep="0.101cm" style:distance-after-sep="0.101cm" style:line-style="solid" style:adjustment="left" style:rel-width="25%" style:color="#000000"/>
@@ -639,10 +608,10 @@
     <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
     <text:sequence-decl text:display-outline-level="0" text:name="Figure"/>
    </text:sequence-decls>
-   <text:h text:style-name="P4" text:outline-level="1"><text:bookmark text:name="zagolovok"/>Заголовок 1</text:h>
-   <text:list xml:id="list1013579291" text:style-name="L1">
+   <text:h text:style-name="P6" text:outline-level="1"><text:bookmark text:name="zagolovok"/>Заголовок 1</text:h>
+   <text:list xml:id="list3083919904" text:style-name="L1">
     <text:list-item>
-     <text:p text:style-name="P11">Numbered list</text:p>
+     <text:p text:style-name="P14">Numbered list</text:p>
      <text:list>
       <text:list-item>
        <text:p text:style-name="P15">sublist</text:p>
@@ -661,10 +630,10 @@
      </text:list>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P11">item <text:span text:style-name="T16">N2</text:span></text:p>
+     <text:p text:style-name="P14">item <text:span text:style-name="T16">N2</text:span></text:p>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P12"><text:span text:style-name="T16">bullet sublist item</text:span></text:p>
+       <text:p text:style-name="P15">bullet sublist item</text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
@@ -672,24 +641,24 @@
      <text:p text:style-name="P15">and possibly 3</text:p>
     </text:list-item>
    </text:list>
-   <text:p text:style-name="P16"><text:span text:style-name="T16">Marked list</text:span></text:p>
-   <text:list xml:id="list49618894" text:style-name="L2">
+   <text:p text:style-name="P5">Marked list</text:p>
+   <text:list xml:id="list3096217017" text:style-name="L2">
     <text:list-item>
-     <text:p text:style-name="P14">marked lis<text:span text:style-name="T16">t item 1</text:span></text:p>
+     <text:p text:style-name="P18">marked lis<text:span text:style-name="T16">t item 1</text:span></text:p>
      <text:list>
       <text:list-item>
-       <text:p text:style-name="P14"><text:span text:style-name="T16">marked list again</text:span></text:p>
+       <text:p text:style-name="P17">marked list again</text:p>
       </text:list-item>
      </text:list>
     </text:list-item>
     <text:list-item>
-     <text:p text:style-name="P13"><text:span text:style-name="T16">another </text:span>item <text:span text:style-name="T16">2</text:span></text:p>
+     <text:p text:style-name="P19"><text:span text:style-name="T16">another </text:span>item <text:span text:style-name="T16">2</text:span></text:p>
     </text:list-item>
    </text:list>
-   <text:h text:style-name="P4" text:outline-level="1"><text:bookmark text:name="zagolovok1"/>Заголовок 2</text:h>
-   <text:h text:style-name="P5" text:outline-level="2"><text:bookmark text:name="zagolovok2"/>Заголовок 2.1</text:h>
-   <text:h text:style-name="P4" text:outline-level="1"><text:bookmark text:name="zagolovok3"/>Заголовок 3</text:h>
-   <text:p text:style-name="P2">Вы когда-нибудь спрашивали своих друзей или близких, что для них значит море? Спросите, любопытства ради. Уверен, все ответы будут разные и одновременно одинаково положительные. Кто-то скажет, что море- это полет и вдохновение; кто-то- что мощь и умиротворение; а кто-то назовет море отпуском и счастливыми летними днями, в первую очередь. Чаще других в этих ответах вам будут встречаться слова: свобода, безмятежность, отдых, веселье, красота, лето, жизнь…</text:p>
+   <text:h text:style-name="P6" text:outline-level="1"><text:bookmark text:name="zagolovok1"/>Заголовок 2</text:h>
+   <text:h text:style-name="P7" text:outline-level="2"><text:bookmark text:name="zagolovok2"/>Заголовок 2.1</text:h>
+   <text:h text:style-name="P6" text:outline-level="1"><text:bookmark text:name="zagolovok3"/>Заголовок 3</text:h>
+   <text:p text:style-name="P10">Вы когда-нибудь спрашивали своих друзей или близких, что для них значит море? Спросите, любопытства ради. Уверен, все ответы будут разные и одновременно одинаково положительные. Кто-то скажет, что море- это полет и вдохновение; кто-то- что мощь и умиротворение; а кто-то назовет море отпуском и счастливыми летними днями, в первую очередь. Чаще других в этих ответах вам будут встречаться слова: свобода, безмятежность, отдых, веселье, красота, лето, жизнь…</text:p>
    <text:p text:style-name="P3">Нет, обязательно найдутся и такие, которые скажут, что море- это просто большая лужа соленой воды; или, как сказал мой дядя (капитан дальнего плавания) : &quot;Море – это десять месяцев в рейсе...&quot;</text:p>
    <text:p text:style-name="P3">Но в глубине души и они испытывают особые чувства к морю.</text:p>
    <text:p text:style-name="P3">Помните, как в фильме &quot;Достучаться до небес&quot; - &quot;На небесах только и говорят, что о море. Стоишь на берегу и чувствуешь соленый запах ветра, что веет с моря, и веришь, что свободен ты, и жизнь лишь началась, и губы жжет подруги поцелуй, пропитанный слезой!&quot;.</text:p>
@@ -700,7 +669,7 @@
    <text:p text:style-name="P3">Те звуки моря, шум морских волн и крики чаек, которые мы предлагаем вам прослушать онлайн, были записаны в метре от настоящего моря с двух микрофонов, один из которых был установлен в небольшой заводи, возле камней, а второй на берегу.</text:p>
    <text:p text:style-name="P3"><text:soft-page-break/>Также очень хорошо можно слышать звук гальчатых камней, которые трутся друг об друга под накатами волн.</text:p>
    <text:p text:style-name="P3">Таким образом, происходит наложение двух морских звуков - шум волн в отдалении и плеск морской воды вблизи, у камней, что делает ощущения присутствия более натуральными</text:p>
-   <text:h text:style-name="P6" text:outline-level="3">Пример расчета</text:h>
+   <text:h text:style-name="P8" text:outline-level="3">Пример расчета</text:h>
    <text:p text:style-name="Preformatted_20_Text"><text:span text:style-name="Source_20_Text"><text:s text:c="4"/>/**</text:span></text:p>
    <text:p text:style-name="Preformatted_20_Text"><text:span text:style-name="Source_20_Text"><text:s text:c="5"/>* Расчет суммы процентов за период. Проценты разбиваются на периоды начисления. Дата начисления процентов - последний день месяца.</text:span></text:p>
    <text:p text:style-name="Preformatted_20_Text"><text:span text:style-name="Source_20_Text"><text:s text:c="5"/>*</text:span></text:p>
@@ -720,10 +689,10 @@
    <text:p text:style-name="Preformatted_20_Text"><text:span text:style-name="Source_20_Text"><text:s text:c="20"/>.add(calcInterestAmountPeriod(rate, amount, lastDayOfMonth.plusDays(1), dt2));</text:span></text:p>
    <text:p text:style-name="Preformatted_20_Text"><text:span text:style-name="Source_20_Text"><text:s text:c="8"/>}</text:span></text:p>
    <text:p text:style-name="Preformatted_20_Text"><text:span text:style-name="Source_20_Text"><text:s text:c="4"/>}</text:span></text:p>
-   <text:h text:style-name="P6" text:outline-level="3"><text:span text:style-name="Source_20_Text">Пробелы</text:span></text:h>
-   <text:list xml:id="list2270066684" text:style-name="L3">
+   <text:h text:style-name="P8" text:outline-level="3"><text:span text:style-name="Source_20_Text">Пробелы</text:span></text:h>
+   <text:list xml:id="list3569036798" text:style-name="L3">
     <text:list-item>
-     <text:p text:style-name="P17"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T7">Б</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T8">езналичная оплата </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">коммунальных</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">и</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">прочих</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">услуг,</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">осуществляемых</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">в</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T15">соответствии с з</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">аключенны</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T10">ми</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T15">Б</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">анком</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">соглашени</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T11">ями</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">об</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">организованном</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">перечислении</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">платежей</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">от</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">физических</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">лиц</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">в</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">пользу</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">юридическ</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T12">их</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">лиц </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T13">и индивидуальных предпринимателей</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">.</text:span></text:span></text:p>
+     <text:p text:style-name="P20"><text:span text:style-name="Source_20_Text"><text:span text:style-name="T7">Б</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T8">езналичная оплата </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">коммунальных</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">и</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">прочих</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">услуг,</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">осуществляемых</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">в</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T15">соответствии с з</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">аключенны</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T10">ми</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T15">Б</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">анком</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">соглашени</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T11">ями</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">об</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">организованном</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">перечислении</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">платежей</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">от</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">физических</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">лиц</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">в</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">пользу</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">юридическ</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T12">их</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T14"> </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">лиц </text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T13">и индивидуальных предпринимателей</text:span></text:span><text:span text:style-name="Source_20_Text"><text:span text:style-name="T9">.</text:span></text:span></text:p>
     </text:list-item>
    </text:list>
   </office:text>

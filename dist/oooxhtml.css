@@ -1,5 +1,10 @@
 table, th, td {border:solid 1px black;border-collapse:collapse;vertical-align:top; padding:0;}
 
+p, pre {
+    margin-top: 4pt;
+    margin-bottom: 4pt;
+}
+
 table p, table pre {
     margin: 0;
 }
@@ -160,6 +165,13 @@ table > caption {
     }
 }
 
+
+
+/*******************************
+             Styles
+*******************************/
+.First_20_line_20_indent {text-indent: 1.5em;}
+
 .Situation {color:#ed1c24;}
 .Motivation {color:#0066b3;}
 .Outcome {color:#00a65d;}
@@ -171,11 +183,6 @@ table > caption {
 .Level4 {color:#0066b3;} /* синий */
 .Level5 {color:#a3238e;} /* фиолетовый */
 .Level6 {color:#000000;} /* черный */
-
-
-/*******************************
-             States
-*******************************/
 
 /*--------------
     Positive

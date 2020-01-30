@@ -54,7 +54,7 @@
     <xsl:variable name="translit_eng" select="'abvgdeеzzijklmnoprstufhccss___eyjabvgdeеzzijklmnoprstufhccss___eyj______\/____'"/>
     <!-- replace in export.xsl and import.xsl -->
     <xsl:variable name="generator_version" select="'1.4'"/>
-    <xsl:param name="copystyles" select="'Good,Neutral,Bad,Warning,Error'"/>
+    <xsl:param name="copystyles" select="'Good,Neutral,Bad,Warning,Error,First_20_line_20_indent'"/>
     <xsl:variable name="documentType" select="local-name(office:document-content | office:document/office:body/office:spreadsheet)"/>
 
 
@@ -219,6 +219,13 @@
         <xsl:variable name="styleName" select="."/>
         <xsl:variable name="style" select = "/*/office:automatic-styles/style:style[@style:name=$styleName]"/>
         <xsl:apply-templates select="$style/*/@*" mode="css"/>
+
+        <xsl:if test="$style/@style:parent-style-name">
+            <xsl:variable name="parentStyleName" select="$style/@style:parent-style-name"/>
+            <!-- не расшиярем стили родителя-строенного стиля  - не пишем | /*/office:styles/style:style[@style:name=$parentStyleName] -->
+            <xsl:variable name="parentStyle" select = "/*/office:automatic-styles/style:style[@style:name=$parentStyleName]"/>
+            <xsl:apply-templates select="$parentStyle/*/@*" mode="css"/>
+        </xsl:if>
     </xsl:template>
     <!-- |@padding|@border-left|@border-right|@border-top|@border-bottom -->
 
@@ -241,6 +248,9 @@
         <xsl:if test=".!='10pt'">
             <xsl:value-of select="concat(local-name(.),':',.,';')"/>
         </xsl:if>
+    </xsl:template>
+    <xsl:template match="@fo:text-indent" mode="css">
+        <xsl:value-of select="concat(local-name(.),':',.,';')"/>
     </xsl:template>
     <xsl:template match="@fo:text-align" mode="css">
         <xsl:if test=".='center' or .='justify'">
@@ -845,7 +855,7 @@
 
         <xsl:choose>
             <!-- не автоматический стиль -->
-            <xsl:when test = "/*/office:styles/style:style[@style:name=$styleName]">
+            <xsl:when test = "/*/office:styles/style:style[@style:name=$styleName and contains($copystyles, $styleName)]">
                 <span class="{$styleName}">
                     <xsl:apply-templates select="@*"/>
                     <xsl:apply-templates />

@@ -608,6 +608,11 @@
                                 <xsl:if test="$value='right'">end</xsl:if>
                             </xsl:attribute>
                         </xsl:when>
+                        <xsl:when test="$attr='text-indent'">
+                            <xsl:attribute name="fo:text-indent">
+                                <xsl:value-of select="$value"/>
+                            </xsl:attribute>
+                        </xsl:when>
                     </xsl:choose>
                 </xsl:for-each>
             </style:paragraph-properties>
