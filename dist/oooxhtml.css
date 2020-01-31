@@ -5,6 +5,10 @@ p, pre {
     margin-bottom: 4pt;
 }
 
+object {
+    max-width: 100%
+}
+
 table p, table pre {
     margin: 0;
 }
