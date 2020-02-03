@@ -36,6 +36,12 @@ var openDocHistory = function () {
   if (headURL) { window.open(headURL.replace('/repos/', '/viewvc/').replace('svn.net.ilb', 'svn.ilb'), '_blank'); }
 };
 
+var toggleAnnotations = function (event) {
+  var body = document.body || document.getElementsByTagName('body')[0];
+  body.classList.toggle('with-annotations');
+  event.currentTarget.classList.toggle('active');
+};
+
 (function(){
   document.addEventListener('keydown', function(event) {
     if (event.altKey || event.metaKey) {
@@ -55,9 +61,14 @@ var openDocHistory = function () {
   }, false);
 
   var appendStyles = function() {
-    var css = '.edit-menu { position: fixed; top: 1rem; right: 1rem; opacity: 0.8; transition: all 0.3s ease-out; z-index: 100; }' +
-              '.edit-menu:hover { opacity: 1; }' +
-              '.edit-menu button { font-size: 1.3rem; height: 2.3rem; min-width: 2.3rem }';
+    var css = '.settings-content { position: fixed; top: 0; right: 0; padding: 0.5rem; background: #fff; z-index: 21;' +
+                '-moz-transform: translateX(100%); -webkit-transform: translateX(100%); transform: translateX(100%);' +
+                'transition: all 0.1s ease-out;' +
+              '}' +
+              '.settings-content button { font-size: 1.3rem; height: 2.3rem; min-width: 2.3rem; cursor: pointer; margin: 0.1rem; }' +
+              '.settings-content button.active { background-color: lightblue }' +
+              '.settings:hover .settings-content { -moz-transform: none; -webkit-transform: none; transform: none; box-shadow: 0 0 20px rgba(23, 32, 30, 0.3); }' +
+              '.settings-label { position: fixed; top: 0; right: 0; background: rgb(0,90,156); color: white; z-index: 20; font-size: 1.7rem; padding: 0.3rem 0.6rem; opacity: 0.7; }';
     var head = document.head || document.getElementsByTagName('head')[0];
     var style = document.createElement('style');
 
@@ -67,33 +78,54 @@ var openDocHistory = function () {
     console.log('editMenu styles appended');
   };
 
-  var appendEditMenu = function() {
-    var editMenu = document.createElement('div');
-    editMenu.className = 'edit-menu';
+  var appendSettings = function() {
+    var settings = document.createElementNS('http://www.w3.org/1999/xhtml','div');
+    settings.className = 'settings';
+
+    var settingsLabel = document.createElementNS('http://www.w3.org/1999/xhtml','div');
+    settingsLabel.className = 'settings-label';
+    settingsLabel.innerHTML = '\u2699';
+    settings.appendChild(settingsLabel);
+
+    var settingsContent = document.createElementNS('http://www.w3.org/1999/xhtml','div');
+    settingsContent.className = 'settings-content';
 
     var editButton = document.createElement('button');
     editButton.innerHTML = '\u270e';
     editButton.setAttribute('title', 'Редактировать (alt+E)');
     editButton.setAttribute('onclick', 'editDoc()');
-    editMenu.appendChild(editButton);
+    settingsContent.appendChild(editButton);
 
     var historyButton = document.createElement('button');
     historyButton.innerHTML = '\u25f4';
     historyButton.setAttribute('title', 'История изменений (alt+H)');
     historyButton.setAttribute('onclick', 'openDocHistory()');
-    editMenu.appendChild(historyButton);
+    settingsContent.appendChild(historyButton);
+
+    var annotationsButton = document.createElement('button');
+    annotationsButton.innerHTML = 'A';
+    annotationsButton.setAttribute('title', 'Показать/скрыть аннотации');
+    var hasAnnotation = document.querySelector('.annotation');
+    annotationsButton.addEventListener('click', toggleAnnotations);
+    settingsContent.appendChild(annotationsButton);
+    if (hasAnnotation) {
+      annotationsButton.click();
+    } else {
+      annotationsButton.setAttribute('disabled', 'disabled');
+    }
 
     var helpButton = document.createElement('button');
     helpButton.innerHTML = '?';
     helpButton.setAttribute('title', 'Справка');
     helpButton.setAttribute('onclick', 'window.open("https://docs.ilb.ru/oooxhtml/readme.xhtml")');
-    editMenu.appendChild(helpButton);
+    settingsContent.appendChild(helpButton);
 
+    settings.appendChild(settingsContent);
     var body = document.body || document.getElementsByTagName('body')[0];
-    body.appendChild(editMenu);
-    console.log('editMenu created');
+    body.appendChild(settings);
+    console.log('settings created');
   };
 
   appendStyles();
-  appendEditMenu();
+  appendSettings();
 }());

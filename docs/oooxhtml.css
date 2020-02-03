@@ -1,3 +1,8 @@
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 table, th, td {border:solid 1px black;border-collapse:collapse;vertical-align:top; padding:0;}
 
 p, pre {
@@ -24,8 +29,8 @@ table > caption {
     max-height: 100%;
     overflow: auto;
     left: 0;
-    width: calc((100vw - 1060px) / 2);
-    min-width: 9.2rem;
+    width: calc((100% - 1300px) / 2);
+    min-width: 160px;
     word-break: break-all;
     word-break: break-word;
 }
@@ -41,34 +46,40 @@ table > caption {
 .container.spreadsheet {
     font-size:10pt;line-height: 1.1;
 }
+
 .container.text {
-    position: relative;
-    width: 1000px;
-    max-width: calc(100vw - 21rem);
-    margin-left: auto !important;
-    margin-right: auto !important;
+    width: 1300px;
+    max-width: 100%;
+    padding: 1rem;
+    margin: 0 auto !important;
+    box-sizing: border-box;
 }
 
-.container.text::before {
+.with-annotations .container.text::before {
     content: "";
-    position: absolute;
+    position: fixed;;
+    top: 0;
     right: 0;
     height: 100vh;
-    box-shadow: 5rem 0 0 5rem lightgray, 1000px 0 0 1000px white;
+    box-shadow: -80px 0 0 80px lightgray, 10000px 0 0 10000px white;
 }
 
 .annotation {
-    display: inline-block;
+    display: none;
     width: 0;
     height: 0;
     margin-bottom: -0.2rem;
     font-size: small;
 }
 
+.with-annotations .annotation {
+  display: inline-block;
+}
+
 .annotation > span {
     position: absolute;
-    right: -10rem;
-    width: 10rem;
+    right: 0;
+    width: 160px;
     text-align: left;
     border-top: 2px solid #007bff;
     border-bottom: 1px solid #007bff;
@@ -86,11 +97,11 @@ table > caption {
     box-shadow: 0 0 1px 1px red inset;
     background: rgb(216, 232, 255);
     border-color: red;
-    z-index: 10;
+    z-index: 30;
 }
 
 .annotation:hover::before {
-    box-shadow: 1000px 1002px 0 1000px white, 1002px 1000px 0 1000px red;
+    box-shadow: 10000px 10002px 0 10000px white, 10002px 10000px 0 10000px red;
 }
 
 .annotation:hover::after {
@@ -115,7 +126,7 @@ table > caption {
 .annotation::before {
     content: "";
     position: absolute;
-    box-shadow: 1000px 1002px 0 1000px white, 1002px 1000px 0 1000px #007bff;
+    box-shadow: 10000px 10002px 0 10000px white, 10002px 10000px 0 10000px #007bff;
     z-index: -2;
 }
 
@@ -141,7 +152,7 @@ table > caption {
     position: absolute;
     top: 0;
     left: -100vw;
-    right: 10rem;
+    right: 160px;
     height: 0;
     border-top: 2px dashed white;
     margin-top: -2px;
@@ -256,4 +267,24 @@ tr.Neutral,
 td.Neutral {
     background: #ffffcc !important;
     color: #9F3A38 !important;
+}
+
+@media (max-width: 1620px) {
+  .contents + .container.text {
+    padding-left: calc(160px - ((100% - 1300px) / 2) + 1rem);
+  }
+
+  .with-annotations .container.text {
+    padding-right: calc(160px - ((100% - 1300px) / 2) + 1rem);
+  }
+}
+
+@media (max-width: 1300px) {
+  .contents + .container.text {
+    padding-left: calc(160px + 1rem);
+  }
+
+  .with-annotations .container.text {
+    padding-right: calc(160px + 1rem);
+  }
 }

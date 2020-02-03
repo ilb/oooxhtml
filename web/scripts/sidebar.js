@@ -28,7 +28,7 @@
   };
 
   var appendStyles = function() {
-    var css = '.sidebar-menu { position: fixed; top: 0; left: 0rem; min-width: 20rem; max-width: 90vw; overflow: auto; height: 100vh; ' +
+    var css = '.sidebar-menu { position: fixed; top: 0; left: 0; min-width: 20rem; max-width: 90vw; overflow: auto; height: 100vh; ' +
                 'padding: 1rem 1rem 1rem 2rem; background: #fff; font-size: 1rem;' +
                 '-moz-transform: translateX(-100%); -webkit-transform: translateX(-100%); transform: translateX(-100%);' +
                 'transition: all 0.1s ease-out;' +
