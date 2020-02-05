@@ -312,7 +312,9 @@ var toggleAnnotations = function (event) {
         };
         menuElem.link = null;
 
-        var existedElem = [].reduce.call(newMenuElems, function (w, e) { return w || (e.displayName === menuElem.displayName && e.childrens) ? e : null }, null);
+        var existedElem = [].reduce.call(newMenuElems, function (w, e) {
+          return w || ((e.displayName === menuElem.displayName && e.childrens) ? e : null)
+        }, null);
         if (existedElem) {
           existedElem.childrens.push(children);
           return;
