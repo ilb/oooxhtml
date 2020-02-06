@@ -70,12 +70,12 @@ var toggleAnnotations = function (event) {
               '.settings:hover .settings-content { -moz-transform: none; -webkit-transform: none; transform: none; box-shadow: 0 0 20px rgba(23, 32, 30, 0.3); }' +
               '.settings-label { position: fixed; top: 0; right: 0; background: rgb(0,90,156); color: white; z-index: 20; font-size: 1.7rem; padding: 0.3rem 0.6rem; opacity: 0.7; }';
     var head = document.head || document.getElementsByTagName('head')[0];
-    var style = document.createElement('style');
+    var style = document.createElementNS('http://www.w3.org/1999/xhtml','style');
 
     style.type = 'text/css';
     style.appendChild(document.createTextNode(css));
     head.appendChild(style);
-    console.log('editMenu styles appended');
+    console.log('settings styles appended');
   };
 
   var appendSettings = function() {
@@ -90,19 +90,19 @@ var toggleAnnotations = function (event) {
     var settingsContent = document.createElementNS('http://www.w3.org/1999/xhtml','div');
     settingsContent.className = 'settings-content';
 
-    var editButton = document.createElement('button');
+    var editButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
     editButton.innerHTML = '\u270e';
     editButton.setAttribute('title', 'Редактировать (alt+E)');
     editButton.setAttribute('onclick', 'editDoc()');
     settingsContent.appendChild(editButton);
 
-    var historyButton = document.createElement('button');
+    var historyButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
     historyButton.innerHTML = '\u25f4';
     historyButton.setAttribute('title', 'История изменений (alt+H)');
     historyButton.setAttribute('onclick', 'openDocHistory()');
     settingsContent.appendChild(historyButton);
 
-    var annotationsButton = document.createElement('button');
+    var annotationsButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
     annotationsButton.innerHTML = 'A';
     annotationsButton.setAttribute('title', 'Показать/скрыть аннотации');
     var hasAnnotation = document.querySelector('.annotation');
@@ -114,7 +114,7 @@ var toggleAnnotations = function (event) {
       annotationsButton.setAttribute('disabled', 'disabled');
     }
 
-    var helpButton = document.createElement('button');
+    var helpButton = document.createElementNS('http://www.w3.org/1999/xhtml','button');
     helpButton.innerHTML = '?';
     helpButton.setAttribute('title', 'Справка');
     helpButton.setAttribute('onclick', 'window.open("https://docs.ilb.ru/oooxhtml/readme.xhtml")');
