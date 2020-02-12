@@ -34,7 +34,7 @@
                 'transition: all 0.1s ease-out;' +
               '}' +
               '.sidebar:hover .sidebar-menu { -moz-transform: none; -webkit-transform: none; transform: none; box-shadow: 0 0 20px rgba(23, 32, 30, 0.3); }' +
-              '.sidebar-label { position: fixed; top: 0; left: 0; background: rgb(0,90,156); color: white; z-index: 1; font-size: 1.3rem; padding: 0.6rem; opacity: 0.8; }' +
+              '.sidebar-label { position: fixed; top: 0; left: 0; background: rgb(0,90,156); color: white; z-index: 1; font-size: 1.3rem; padding: 0.4rem 0.6rem; opacity: 0.8; }' +
               '.sidebar .current { background: lightblue }' +
               '.sidebar-dir-btn { background: white; border: 0; outline: none; width: 1.5rem; height: 1rem; }' +
               '.sidebar-hidden { display: none; }';
@@ -212,8 +212,8 @@
     if (!a.parentLink && b.parentLink) { return 1; }
     if (a.isDirectory && !b.isDirectory) { return -1; }
     if (!a.isDirectory && b.isDirectory) { return 1; }
-    if (a.displayName.toLowerCase() < a.displayName.toLowerCase()) { return -1; }
-    if (a.displayName.toLowerCase() > a.displayName.toLowerCase()) { return 1; }
+    if (a.displayName.toLowerCase() < b.displayName.toLowerCase()) { return -1; }
+    if (a.displayName.toLowerCase() > b.displayName.toLowerCase()) { return 1; }
     return 0;
   };
 

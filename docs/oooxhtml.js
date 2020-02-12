@@ -68,7 +68,7 @@ var toggleAnnotations = function (event) {
               '.settings-content button { font-size: 1.3rem; height: 2.3rem; min-width: 2.3rem; cursor: pointer; margin: 0.1rem; }' +
               '.settings-content button.active { background-color: lightblue }' +
               '.settings:hover .settings-content { -moz-transform: none; -webkit-transform: none; transform: none; box-shadow: 0 0 20px rgba(23, 32, 30, 0.3); }' +
-              '.settings-label { position: fixed; top: 0; right: 0; background: rgb(0,90,156); color: white; z-index: 20; font-size: 1.7rem; padding: 0.3rem 0.6rem; opacity: 0.7; }';
+              '.settings-label { position: fixed; top: 0; right: 0; background: rgb(0,90,156); color: white; z-index: 20; font-size: 1.7rem; padding: 0.3rem 0.5rem; opacity: 0.7; }';
     var head = document.head || document.getElementsByTagName('head')[0];
     var style = document.createElementNS('http://www.w3.org/1999/xhtml','style');
 
@@ -165,7 +165,7 @@ var toggleAnnotations = function (event) {
                 'transition: all 0.1s ease-out;' +
               '}' +
               '.sidebar:hover .sidebar-menu { -moz-transform: none; -webkit-transform: none; transform: none; box-shadow: 0 0 20px rgba(23, 32, 30, 0.3); }' +
-              '.sidebar-label { position: fixed; top: 0; left: 0; background: rgb(0,90,156); color: white; z-index: 1; font-size: 1.3rem; padding: 0.6rem; opacity: 0.8; }' +
+              '.sidebar-label { position: fixed; top: 0; left: 0; background: rgb(0,90,156); color: white; z-index: 1; font-size: 1.3rem; padding: 0.4rem 0.6rem; opacity: 0.8; }' +
               '.sidebar .current { background: lightblue }' +
               '.sidebar-dir-btn { background: white; border: 0; outline: none; width: 1.5rem; height: 1rem; }' +
               '.sidebar-hidden { display: none; }';
@@ -343,8 +343,8 @@ var toggleAnnotations = function (event) {
     if (!a.parentLink && b.parentLink) { return 1; }
     if (a.isDirectory && !b.isDirectory) { return -1; }
     if (!a.isDirectory && b.isDirectory) { return 1; }
-    if (a.displayName.toLowerCase() < a.displayName.toLowerCase()) { return -1; }
-    if (a.displayName.toLowerCase() > a.displayName.toLowerCase()) { return 1; }
+    if (a.displayName.toLowerCase() < b.displayName.toLowerCase()) { return -1; }
+    if (a.displayName.toLowerCase() > b.displayName.toLowerCase()) { return 1; }
     return 0;
   };
 
