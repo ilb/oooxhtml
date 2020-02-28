@@ -19,6 +19,7 @@
     xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0"
     xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"
     xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0"
+    xmlns:svgw3c="http://www.w3.org/2000/svg"
     xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"
     xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
     xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0"
@@ -29,7 +30,8 @@
     xmlns:exsl="http://exslt.org/common"
     extension-element-prefixes="exsl"
     xmlns="http://www.w3.org/1999/xhtml"
-    exclude-result-prefixes="chart config dc dom dr3d draw fo form math meta number office ooo oooc ooow script style svg table text xforms xlink xsd xsi xforms xsd xsi exsl loext"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    exclude-result-prefixes="chart config dc dom dr3d draw fo form math meta number office ooo oooc ooow script style svg table text xforms xlink xsd xsi xforms xsd xsi exsl loext svgw3c xhtml"
     version="1.0">
 
     <!--<xsl:include href="measure_conversion.xsl"/>-->
@@ -56,7 +58,15 @@
     <xsl:variable name="generator_version" select="'1.4'"/>
     <xsl:param name="copystyles" select="'Good,Neutral,Bad,Warning,Error,First_20_line_20_indent'"/>
     <xsl:variable name="documentType" select="local-name(office:document-content | office:document/office:body/office:spreadsheet)"/>
-
+    <xsl:variable name="svgLinks">
+        <xsl:for-each select="//draw:image[contains(@xlink:href,'.svg')]">
+            <xsl:for-each select="document(@xlink:href)//svgw3c:a">
+                <a href="{substring-after(@xlink:href,'#')}">
+                    <xsl:value-of select="normalize-space(.)"/>
+                </a>
+            </xsl:for-each>
+        </xsl:for-each>
+    </xsl:variable>
 
     <!-- from measure_conversion.xsl -->
     <xsl:param name="dpi" select="111"/>
@@ -313,6 +323,17 @@
 
     <xsl:template match="office:body">
         <body>
+            <!--            <div>
+                <xsl:for-each select="//draw:image[contains(@xlink:href,'.svg')]">
+                    <p>
+                        <xsl:for-each select="document(@xlink:href)//svgw3c:a">
+                            <a href="{substring-after(@xlink:href,'#')}">
+                                <xsl:value-of select="normalize-space(.)"/>
+                            </a>
+                        </xsl:for-each>
+                    </p>
+                </xsl:for-each>
+            </div>-->
             <xsl:apply-templates />
         </body>
     </xsl:template>
@@ -813,12 +834,18 @@
     </xsl:template>
 
     <xsl:template match="text:h" mode="id">
+        <xsl:variable name="label" select="normalize-space(text()|text:span|text:p)"/>
+        <xsl:variable name="svgLink" select="exsl:node-set($svgLinks)/xhtml:a[text()=$label]"/>
         <xsl:choose>
+            <!-- auto-boomark using svg links -->
+            <xsl:when test="$svgLink">
+                <xsl:value-of select="$svgLink/@href"/>
+            </xsl:when>
             <xsl:when test="text:bookmark">
                 <xsl:value-of select="translate(text:bookmark/@text:name,' ','_')"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="translate(normalize-space(text()|text:span|text:p),$translit_rus,$translit_eng)"/>
+                <xsl:value-of select="translate($label,$translit_rus,$translit_eng)"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
