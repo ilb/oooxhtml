@@ -37,7 +37,7 @@
     <xsl:strip-space elements="*"/>
     <xsl:param name="pxmm" select="4"/>
     <!-- replace in export.xsl and import.xsl -->
-    <xsl:variable name="generator_version" select="'1.4'"/>
+    <xsl:variable name="generator_version" select="'1.5'"/>
     <xsl:variable name="is_spreadsheet" select="boolean(/x:html/x:body/x:div[contains(@class,'spreadsheet')])"/>
 
     <xsl:output method="xml"

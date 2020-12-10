@@ -55,7 +55,7 @@
     <xsl:variable name="translit_rus" select="'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ .,;/?\/«»!@#$%^*()&amp;'"/>
     <xsl:variable name="translit_eng" select="'abvgdeеzzijklmnoprstufhccss___eyjabvgdeеzzijklmnoprstufhccss___eyj______\/____________'"/>
     <!-- replace in export.xsl and import.xsl -->
-    <xsl:variable name="generator_version" select="'1.4'"/>
+    <xsl:variable name="generator_version" select="'1.5'"/>
     <xsl:param name="copystyles" select="'Good,Neutral,Bad,Warning,Error,First_20_line_20_indent'"/>
     <xsl:variable name="documentType" select="local-name(office:document-content | office:document/office:body/office:spreadsheet)"/>
     <xsl:variable name="svgLinks">
@@ -859,19 +859,25 @@
                 <xsl:attribute name="id">
                     <xsl:value-of select="$name"/>
                 </xsl:attribute>
-                <a class="anchor" href="#{$name}">
-                    <xsl:apply-templates />
-                </a>
-
+                <!--<a class="anchor" href="#{$name}">-->
+                <xsl:apply-templates />
+                <!--</a>-->
             </xsl:element>
         </xsl:if>
     </xsl:template>
 
     <xsl:template match="text:span[@text:style-name='Citation']">
-        <cite>
-            <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates />
-        </cite>
+        <xsl:variable name="prev" select="preceding-sibling::*"/>
+        <xsl:if test="not(local-name($prev)='span' and $prev/@text:style-name='Citation')">
+            <cite>
+                <xsl:apply-templates select="@*"/>
+                <xsl:apply-templates />
+                <!-- включение "разбитых на части" cite -->
+                <xsl:for-each select="following-sibling::text:span[@text:style-name='Citation']">
+                    <xsl:apply-templates />
+                </xsl:for-each>
+            </cite>
+        </xsl:if>
     </xsl:template>
     <xsl:template match="text:span">
         <!--<xsl:if test="normalize-space(.)">-->

@@ -53,5 +53,22 @@
             <xsl:apply-templates select="@*|node()"/>
         </xsl:copy>
     </xsl:template>
+    <xsl:template match="xhtml:h1 | xhtml:h2 | xhtml:h3 | xhtml:h4">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:choose>
+                <!-- when header contains <a> tag, output as is -->
+                <xsl:when test="xhtml:a">
+                    <xsl:apply-templates />
+                </xsl:when>
+                <!-- otherwise wrap with <a> tag -->
+                <xsl:otherwise>
+                    <a href="#{@id}">
+                        <xsl:apply-templates />
+                    </a>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:copy>
+    </xsl:template>
 
 </xsl:stylesheet>
