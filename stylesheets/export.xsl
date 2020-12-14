@@ -866,67 +866,102 @@
         </xsl:if>
     </xsl:template>
 
-    <xsl:template match="text:span[@text:style-name='Citation']">
-        <xsl:variable name="prev" select="preceding-sibling::*"/>
-        <xsl:if test="not(local-name($prev)='span' and $prev/@text:style-name='Citation')">
-            <cite>
-                <xsl:apply-templates select="@*"/>
-                <xsl:apply-templates />
-                <!-- включение "разбитых на части" cite -->
-                <xsl:for-each select="following-sibling::text:span[@text:style-name='Citation']">
-                    <xsl:apply-templates />
-                </xsl:for-each>
-            </cite>
+
+    <xsl:template match="text:span" mode="deduplicate">
+        <xsl:variable name="next" select="(following-sibling::text() | following-sibling::*[local-name()!='soft-page-break' and local-name()!='bookmark-start' and local-name()!='bookmark-end'])[1]"/>
+        <!--<xsl:value-of select="concat('local-name=',local-name($next))"/>-->
+        <xsl:if test="local-name($next)='span'">
+            <xsl:variable name="styleName" select="@text:style-name"/>
+            <xsl:variable name="style">
+                <xsl:apply-templates select="@text:style-name" mode="expandcss"/>
+            </xsl:variable>
+
+            <xsl:variable name="nextStyleName" select="$next/@text:style-name"/>
+            <xsl:variable name="nextStyle">
+                <xsl:apply-templates select="$next/@text:style-name" mode="expandcss"/>
+            </xsl:variable>
+            <xsl:choose>
+                <!-- если стиль следующего элемента совпадает -->
+                <xsl:when test="($styleName = $nextStyleName) or ($style = $nextStyle)">
+                    <!-- вывести содежимое -->
+                    <xsl:apply-templates select="$next/text() | $next/*"/>
+                    <!-- новая итерация -->
+                    <xsl:apply-templates select="$next"  mode="deduplicate"/>
+                </xsl:when>
+            </xsl:choose>
         </xsl:if>
+
     </xsl:template>
+
+
     <xsl:template match="text:span">
         <!--<xsl:if test="normalize-space(.)">-->
         <xsl:variable name="styleName" select="@text:style-name"/>
         <xsl:variable name="style">
             <xsl:apply-templates select="@text:style-name" mode="expandcss"/>
         </xsl:variable>
+        <xsl:variable name="prev" select="(preceding-sibling::text() | preceding-sibling::*[local-name()!='soft-page-break'  and local-name()!='bookmark-start' and local-name()!='bookmark-end'])[1]"/>
+        <xsl:variable name="prevStyleName" select="$prev/@text:style-name"/>
+        <xsl:variable name="prevStyle">
+            <xsl:apply-templates select="$prev/@text:style-name" mode="expandcss"/>
+        </xsl:variable>
 
-        <xsl:choose>
-            <!-- не автоматический стиль -->
-            <xsl:when test = "/*/office:styles/style:style[@style:name=$styleName and contains($copystyles, $styleName)]">
-                <span class="{$styleName}">
-                    <xsl:apply-templates select="@*"/>
+        <!--<xsl:value-of select="concat('styleName=',$styleName,'prevStyleName=',$prevStyleName,'prevName=',local-name($prev),'.')"/>-->
+        <!-- дублирующие span исключаем -->
+        <xsl:if test="not(local-name($prev)='span' and (($prevStyleName = $styleName) or ($prevStyle = $style)))">
+            <xsl:choose>
+                <!-- не автоматический стиль -->
+                <xsl:when test = "/*/office:styles/style:style[@style:name=$styleName and contains($copystyles, $styleName)]">
+                    <span class="{$styleName}">
+                        <xsl:apply-templates select="@*"/>
+                        <xsl:apply-templates />
+                        <xsl:apply-templates select="." mode="deduplicate"/>
+                    </span>
+                </xsl:when>
+                <xsl:when test="@text:style-name='Citation'">
+                    <cite>
+                        <xsl:apply-templates />
+                        <xsl:apply-templates select="." mode="deduplicate"/>
+                    </cite>
+                </xsl:when>
+                <!-- упрощаем простые стили -->
+                <xsl:when test="$style='font-weight:bold;'">
+                    <b>
+                        <xsl:apply-templates />
+                        <xsl:apply-templates select="." mode="deduplicate"/>
+                    </b>
+                </xsl:when>
+                <xsl:when test="contains($style,'vertical-align:sub;font-size:smaller;')">
+                    <sub>
+                        <xsl:apply-templates />
+                        <xsl:apply-templates select="." mode="deduplicate"/>
+                    </sub>
+                </xsl:when>
+                <xsl:when test="contains($style,'vertical-align:super;font-size:smaller;')">
+                    <sup>
+                        <xsl:apply-templates />
+                        <xsl:apply-templates select="." mode="deduplicate"/>
+                    </sup>
+                </xsl:when>
+                <xsl:when test="$style='font-style:italic;'">
+                    <i>
+                        <xsl:apply-templates />
+                        <xsl:apply-templates select="." mode="deduplicate"/>
+                    </i>
+                </xsl:when>
+                <!-- если стили не сконвертировались, выведем текст без span ? -->
+                <!--                <xsl:when test="$style=''">
                     <xsl:apply-templates />
-                </span>
-            </xsl:when>
-            <!-- упрощаем простые стили -->
-            <xsl:when test="$style='font-weight:bold;'">
-                <b>
-                    <xsl:apply-templates />
-                </b>
-            </xsl:when>
-            <xsl:when test="contains($style,'vertical-align:sub;font-size:smaller;')">
-                <sub>
-                    <xsl:apply-templates />
-                </sub>
-            </xsl:when>
-            <xsl:when test="contains($style,'vertical-align:super;font-size:smaller;')">
-                <sup>
-                    <xsl:apply-templates />
-                </sup>
-            </xsl:when>
-            <xsl:when test="$style='font-style:italic;'">
-                <i>
-                    <xsl:apply-templates />
-                </i>
-            </xsl:when>
-            <!-- если стили не сконвертировались, выведем текст без span ? -->
-            <xsl:when test="$style=''">
-                <xsl:apply-templates />
-            </xsl:when>
-            <xsl:otherwise>
-                <span>
-                    <xsl:apply-templates select="@*"/>
-                    <xsl:apply-templates />
-                </span>
-            </xsl:otherwise>
-        </xsl:choose>
-        <!--</xsl:if>-->
+                </xsl:when>-->
+                <xsl:otherwise>
+                    <span>
+                        <xsl:apply-templates select="@*"/>
+                        <xsl:apply-templates />
+                        <xsl:apply-templates select="." mode="deduplicate"/>
+                    </span>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="*| @*" />
