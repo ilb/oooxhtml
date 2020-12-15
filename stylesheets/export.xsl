@@ -868,7 +868,7 @@
 
 
     <xsl:template match="text:span" mode="deduplicate">
-        <xsl:variable name="next" select="(following-sibling::text() | following-sibling::*[local-name()!='soft-page-break' and local-name()!='bookmark-start' and local-name()!='bookmark-end'])[1]"/>
+        <xsl:variable name="next" select="following-sibling::node()[local-name()!='soft-page-break' and local-name()!='bookmark-start' and local-name()!='bookmark-end'][1]"/>
         <!--<xsl:value-of select="concat('local-name=',local-name($next))"/>-->
         <xsl:if test="local-name($next)='span'">
             <xsl:variable name="styleName" select="@text:style-name"/>
@@ -900,7 +900,7 @@
         <xsl:variable name="style">
             <xsl:apply-templates select="@text:style-name" mode="expandcss"/>
         </xsl:variable>
-        <xsl:variable name="prev" select="(preceding-sibling::text() | preceding-sibling::*[local-name()!='soft-page-break'  and local-name()!='bookmark-start' and local-name()!='bookmark-end'])[1]"/>
+        <xsl:variable name="prev" select="preceding-sibling::node()[local-name()!='soft-page-break'  and local-name()!='bookmark-start' and local-name()!='bookmark-end'][1]"/>
         <xsl:variable name="prevStyleName" select="$prev/@text:style-name"/>
         <xsl:variable name="prevStyle">
             <xsl:apply-templates select="$prev/@text:style-name" mode="expandcss"/>
