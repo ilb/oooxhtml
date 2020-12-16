@@ -91,6 +91,8 @@
       if (!tds || tds.length < 3) { return; }
       var a = tds[0].querySelector('a');
       if (!a) { return; }
+      // skip .content folders
+      if (a.href.endsWith('.content/')) { return; }
       var link = (parent && parent.href && !/^\//.test(a.href)) ? parent.href + a.getAttribute('href') : a.href;
       var menuElem = {
         link: link,
