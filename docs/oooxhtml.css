@@ -288,3 +288,7 @@ td.Neutral {
     padding-right: calc(160px + 1rem);
   }
 }
+
+.PlantUML {
+    display: none;
+}

@@ -56,7 +56,7 @@
     <xsl:variable name="translit_eng" select="'abvgdeеzzijklmnoprstufhccss___eyjabvgdeеzzijklmnoprstufhccss___eyj______\/____________'"/>
     <!-- replace in export.xsl and import.xsl -->
     <xsl:variable name="generator_version" select="'1.5'"/>
-    <xsl:param name="copystyles" select="'Good,Neutral,Bad,Warning,Error,First_20_line_20_indent'"/>
+    <xsl:param name="copystyles" select="'Good,Neutral,Bad,Warning,Error,First_20_line_20_indent,PlantUML'"/>
     <xsl:variable name="documentType" select="local-name(office:document-content | office:document/office:body/office:spreadsheet)"/>
     <xsl:variable name="svgLinks">
         <xsl:for-each select="//draw:image[contains(@xlink:href,'.svg')]">
