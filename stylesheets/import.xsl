@@ -201,6 +201,7 @@
                             <style:paragraph-properties fo:text-align="center" style:justify-single-word="false" text:number-lines="false" text:line-number="0"/>
                             <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
                         </style:style>
+                        <style:style style:name="PlantUML" style:family="paragraph"/>
                         <style:style style:name="Situation" style:family="text">
                             <style:text-properties fo:color="#ed1c24"/>
                         </style:style>
