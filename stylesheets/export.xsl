@@ -949,10 +949,11 @@
                         <xsl:apply-templates select="." mode="deduplicate"/>
                     </i>
                 </xsl:when>
-                <!-- если стили не сконвертировались, выведем текст без span ? -->
-                <!--                <xsl:when test="$style=''">
+                <!-- если стили не сконвертировались, выведем текст без span -->
+                <xsl:when test="$style=''">
                     <xsl:apply-templates />
-                </xsl:when>-->
+                    <xsl:apply-templates select="." mode="deduplicate"/>
+                </xsl:when>
                 <xsl:otherwise>
                     <span>
                         <xsl:apply-templates select="@*"/>
